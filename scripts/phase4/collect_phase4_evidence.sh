@@ -39,7 +39,11 @@ else
   } > "$OUTPUT_DIR/multi-project-scheduler.log"
 fi
 
-{
-  date -u +%Y-%m-%dT%H:%M:%SZ
-  printf 'pm-notification evidence pending live smoke\n'
-} > "$OUTPUT_DIR/pm-notification.log"
+if [ -f /home/ubuntu/cccagents/projects/phase4-notification-smoke/08-logs/pm-notification.log ]; then
+  cp /home/ubuntu/cccagents/projects/phase4-notification-smoke/08-logs/pm-notification.log "$OUTPUT_DIR/pm-notification.log"
+else
+  {
+    date -u +%Y-%m-%dT%H:%M:%SZ
+    printf 'pm-notification evidence pending live smoke\n'
+  } > "$OUTPUT_DIR/pm-notification.log"
+fi

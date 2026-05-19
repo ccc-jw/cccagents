@@ -1,2 +1,26 @@
-2026-05-19T17:10:23Z
-pm-notification evidence pending live smoke
+PM update for phase4-notification-smoke
+Event: progress_summary
+Title: Phase 4 progress
+Body: Scheduler smoke running with ANTHROPIC_API_KEY=[REDACTED]
+Required action: none
+Task: task_progress_1
+---
+PM update for phase4-notification-smoke
+Event: restart_recovery
+Title: Task interrupted after restart
+Body: task_restart_1 requires retry decision
+Required action: approve_retry_or_stop
+Task: task_restart_1
+---
+PM update for phase4-notification-smoke
+Event: approval_request
+Title: Approval required
+Body: L2 project change requires PM approval
+Required action: approve_or_reject
+Task: task_approval_1
+---
+PM update for phase4-notification-smoke
+Event: completion_notice
+Title: Phase 4 smoke complete
+Body: PM notification smoke completed
+Required action: none

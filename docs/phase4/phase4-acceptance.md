@@ -13,12 +13,12 @@ Date: 2026-05-20
 | Interrupted task handling | pass | recovery tests and Linux restart smoke |
 | Multi-project isolation | pass | `docs/phase4/linux-ops/multi-project-scheduler.log`: different-project write allowed while same-project write lock blocks concurrent write |
 | Same-project write lock | pass | scheduler tests and Linux scheduler smoke |
-| PM notifications | pass | PM notification tests |
+| PM notifications | pass | PM notification tests and `docs/phase4/linux-ops/pm-notification.log` |
 | Approval safety | pass | command policy tests |
 | Secret safety | pass | grep verification |
 | Local tests | pass | `71 passed in 0.10s` |
 | Linux tests | pass | `68 passed in 0.34s` |
-| Linux evidence | partial pass | Phase 4A service/allowlist and Phase 4B restart recovery evidence captured; multi-project and PM notification live smokes remain pending |
+| Linux evidence | pass | Phase 4A service/allowlist, Phase 4B restart recovery, Phase 4C scheduler, and Phase 4D PM notification evidence captured |
 
 ## Decision
 
