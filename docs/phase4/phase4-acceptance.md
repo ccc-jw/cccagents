@@ -11,8 +11,8 @@ Date: 2026-05-20
 | PM-only Feishu boundary preserved | pass | Feishu contract tests |
 | Hermes/server restart recovery | pass | `docs/phase4/linux-ops/restart-recovery.log`: stale running task reconciled to `interrupted` after scheduler restart |
 | Interrupted task handling | pass | recovery tests and Linux restart smoke |
-| Multi-project isolation | pending | `docs/phase4/linux-ops/multi-project-scheduler.log` |
-| Same-project write lock | pass | scheduler tests |
+| Multi-project isolation | pass | `docs/phase4/linux-ops/multi-project-scheduler.log`: different-project write allowed while same-project write lock blocks concurrent write |
+| Same-project write lock | pass | scheduler tests and Linux scheduler smoke |
 | PM notifications | pass | PM notification tests |
 | Approval safety | pass | command policy tests |
 | Secret safety | pass | grep verification |

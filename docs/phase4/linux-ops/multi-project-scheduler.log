@@ -1,2 +1,4 @@
-2026-05-19T17:07:10Z
-multi-project-scheduler evidence pending live smoke
+{"allowed": true, "reason": "dispatch_allowed", "scenario": "project_a_first_write"}
+{"allowed": false, "reason": "same_project_write_lock", "scenario": "project_a_second_write_blocked"}
+{"allowed": true, "reason": "dispatch_allowed", "scenario": "project_b_write_allowed"}
+{"allowed": false, "reason": "cwd_outside_project", "scenario": "project_a_outside_cwd_blocked"}

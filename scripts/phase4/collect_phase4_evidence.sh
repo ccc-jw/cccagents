@@ -30,9 +30,16 @@ else
   } > "$OUTPUT_DIR/restart-recovery.log"
 fi
 
-for name in multi-project-scheduler pm-notification; do
+if [ -f /home/ubuntu/cccagents/projects/phase4-scheduler-smoke/08-logs/multi-project-scheduler.jsonl ]; then
+  cp /home/ubuntu/cccagents/projects/phase4-scheduler-smoke/08-logs/multi-project-scheduler.jsonl "$OUTPUT_DIR/multi-project-scheduler.log"
+else
   {
     date -u +%Y-%m-%dT%H:%M:%SZ
-    printf '%s evidence pending live smoke\n' "$name"
-  } > "$OUTPUT_DIR/$name.log"
-done
+    printf 'multi-project-scheduler evidence pending live smoke\n'
+  } > "$OUTPUT_DIR/multi-project-scheduler.log"
+fi
+
+{
+  date -u +%Y-%m-%dT%H:%M:%SZ
+  printf 'pm-notification evidence pending live smoke\n'
+} > "$OUTPUT_DIR/pm-notification.log"
