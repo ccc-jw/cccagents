@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+OUTPUT_DIR="${1:-docs/phase4/linux-ops}"
+mkdir -p "$OUTPUT_DIR"
+
+{
+  date -u +%Y-%m-%dT%H:%M:%SZ
+  systemctl is-enabled cccagents-hermes-gateway 2>/dev/null || true
+  systemctl is-active cccagents-hermes-gateway 2>/dev/null || true
+  systemctl is-enabled cccagents-pm-scheduler 2>/dev/null || true
+  systemctl is-active cccagents-pm-scheduler 2>/dev/null || true
+} > "$OUTPUT_DIR/service-install.log"
+
+{
+  date -u +%Y-%m-%dT%H:%M:%SZ
+  if [ -f /home/ubuntu/.hermes/.env ]; then
+    grep -E 'GATEWAY_ALLOW_ALL_USERS|FEISHU' /home/ubuntu/.hermes/.env | sed -E 's/(FEISHU_[A-Z_]+=).*/\1[REDACTED]/; s/(ou_)[A-Za-z0-9_-]+/\1[REDACTED]/g'
+  else
+    printf 'hermes_env=missing\n'
+  fi
+} > "$OUTPUT_DIR/allowlist-check.log"
+
+for name in restart-recovery multi-project-scheduler pm-notification; do
+  {
+    date -u +%Y-%m-%dT%H:%M:%SZ
+    printf '%s evidence pending live smoke\n' "$name"
+  } > "$OUTPUT_DIR/$name.log"
+done
