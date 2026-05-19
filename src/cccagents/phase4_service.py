@@ -13,7 +13,7 @@ Type=simple
 User={user}
 WorkingDirectory={working_directory}
 EnvironmentFile={env_file}
-ExecStart=/home/ubuntu/.local/bin/hermes gateway run --accept-hooks
+ExecStart=/home/ubuntu/.local/bin/hermes gateway run --accept-hooks --replace
 Restart=always
 RestartSec=5
 
@@ -39,7 +39,8 @@ User={user}
 WorkingDirectory={working_directory}
 EnvironmentFile={env_file}
 Environment=CCCAGENTS_PROJECT_ROOT={project_root}
-ExecStart=/usr/bin/env python3 -m cccagents.pm_scheduler
+Environment=PYTHONPATH={working_directory}/src
+ExecStart={working_directory}/.venv/bin/python -m cccagents.pm_scheduler
 Restart=always
 RestartSec=5
 

@@ -12,7 +12,7 @@ def test_gateway_service_unit_is_restartable_and_uses_env_file():
     assert "User=ubuntu" in unit
     assert "WorkingDirectory=/home/ubuntu/cccagents-source" in unit
     assert "EnvironmentFile=/home/ubuntu/.hermes/.env" in unit
-    assert "ExecStart=/home/ubuntu/.local/bin/hermes gateway run --accept-hooks" in unit
+    assert "ExecStart=/home/ubuntu/.local/bin/hermes gateway run --accept-hooks --replace" in unit
     assert "Restart=always" in unit
     assert "WantedBy=multi-user.target" in unit
     assert "FEISHU_APP_SECRET" not in unit
@@ -32,6 +32,7 @@ def test_scheduler_service_unit_is_restartable_and_project_root_bound():
     assert "WorkingDirectory=/home/ubuntu/cccagents-source" in unit
     assert "EnvironmentFile=/home/ubuntu/.hermes/.env" in unit
     assert "Environment=CCCAGENTS_PROJECT_ROOT=/home/ubuntu/cccagents/projects" in unit
-    assert "ExecStart=/usr/bin/env python3 -m cccagents.pm_scheduler" in unit
+    assert "Environment=PYTHONPATH=/home/ubuntu/cccagents-source/src" in unit
+    assert "ExecStart=/home/ubuntu/cccagents-source/.venv/bin/python -m cccagents.pm_scheduler" in unit
     assert "Restart=always" in unit
     assert "WantedBy=multi-user.target" in unit
