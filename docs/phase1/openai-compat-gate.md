@@ -26,3 +26,24 @@ Evidence to save:
 - Gateway access evidence
 - Output artifact path
 - Final decision: `pass` or `fail`
+
+Environment variable verification:
+
+```bash
+export ANTHROPIC_BASE_URL="http://cccai.store"
+export ANTHROPIC_API_KEY="<redacted-api-key>"
+export ANTHROPIC_MODEL="qwen3.6-plus"
+
+claude -p "只回复 OK" --model qwen3.6-plus --output-format text
+```
+
+Expected output:
+
+```text
+OK
+```
+
+Security rule:
+
+- Never commit or paste the real API key into docs, logs, Feishu messages, or prompt summaries.
+- Store evidence with `ANTHROPIC_API_KEY=[REDACTED]`.
