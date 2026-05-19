@@ -120,3 +120,22 @@ Conclusion:
 
 - Phase 1B does not pass the project hard gate.
 - Per requirement, stop before Phase 2 multi-agent workflow implementation.
+
+## Phase 1B Environment Variable Gateway Retry
+
+Status: pass
+
+Evidence:
+
+- Claude Code CLI 2.1.144 accepted environment configuration:
+  - ANTHROPIC_BASE_URL=http://cccai.store
+  - ANTHROPIC_API_KEY=[REDACTED]
+  - ANTHROPIC_MODEL=qwen3.6-plus
+- Non-interactive smoke test succeeded:
+  - Command: claude -p "只回复 OK" --model qwen3.6-plus --output-format text
+  - Output: OK
+- No protocol adapter was introduced.
+
+Decision:
+
+- Phase 1B passes under Claude Code CLI environment-variable configuration.

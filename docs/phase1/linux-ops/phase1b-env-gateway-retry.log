@@ -1,0 +1,11 @@
+# Phase 1B env gateway retry
+2026-05-19T11:39:04Z
+ANTHROPIC_BASE_URL=http://cccai.store
+ANTHROPIC_API_KEY=[REDACTED]
+ANTHROPIC_MODEL=qwen3.6-plus
+
+## claude version
+2.1.144 (Claude Code)
+
+## claude print smoke test
+OK
