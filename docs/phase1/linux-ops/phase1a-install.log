@@ -1,0 +1,511 @@
+Distributor ID:	Ubuntu
+Description:	Ubuntu 24.04.4 LTS
+Release:	24.04
+Codename:	noble
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Hit:1 http://mirrors.tencentyun.com/ubuntu noble InRelease
+Get:2 http://mirrors.tencentyun.com/ubuntu noble-updates InRelease [126 kB]
+Get:3 http://mirrors.tencentyun.com/ubuntu noble-backports InRelease [126 kB]
+Get:4 http://mirrors.tencentyun.com/ubuntu noble-security InRelease [126 kB]
+Get:5 http://mirrors.tencentyun.com/ubuntu noble-updates/main amd64 Packages [2,003 kB]
+Get:6 http://mirrors.tencentyun.com/ubuntu noble-updates/main Translation-en [354 kB]
+Get:7 http://mirrors.tencentyun.com/ubuntu noble-updates/main amd64 Components [177 kB]
+Get:8 http://mirrors.tencentyun.com/ubuntu noble-updates/main amd64 c-n-f Metadata [17.1 kB]
+Get:9 http://mirrors.tencentyun.com/ubuntu noble-updates/restricted amd64 Packages [3,187 kB]
+Get:10 http://mirrors.tencentyun.com/ubuntu noble-updates/restricted Translation-en [738 kB]
+Get:11 http://mirrors.tencentyun.com/ubuntu noble-updates/restricted amd64 Components [212 B]
+Get:12 http://mirrors.tencentyun.com/ubuntu noble-updates/restricted amd64 c-n-f Metadata [480 B]
+Get:13 http://mirrors.tencentyun.com/ubuntu noble-updates/universe amd64 Packages [1,689 kB]
+Get:14 http://mirrors.tencentyun.com/ubuntu noble-updates/universe Translation-en [328 kB]
+Get:15 http://mirrors.tencentyun.com/ubuntu noble-updates/universe amd64 Components [386 kB]
+Get:16 http://mirrors.tencentyun.com/ubuntu noble-updates/universe amd64 c-n-f Metadata [34.5 kB]
+Get:17 http://mirrors.tencentyun.com/ubuntu noble-updates/multiverse amd64 Packages [44.4 kB]
+Get:18 http://mirrors.tencentyun.com/ubuntu noble-updates/multiverse Translation-en [10.7 kB]
+Get:19 http://mirrors.tencentyun.com/ubuntu noble-updates/multiverse amd64 Components [940 B]
+Get:20 http://mirrors.tencentyun.com/ubuntu noble-updates/multiverse amd64 c-n-f Metadata [656 B]
+Get:21 http://mirrors.tencentyun.com/ubuntu noble-backports/main amd64 Packages [40.6 kB]
+Get:22 http://mirrors.tencentyun.com/ubuntu noble-backports/main Translation-en [9,172 B]
+Get:23 http://mirrors.tencentyun.com/ubuntu noble-backports/main amd64 Components [5,760 B]
+Get:24 http://mirrors.tencentyun.com/ubuntu noble-backports/main amd64 c-n-f Metadata [368 B]
+Get:25 http://mirrors.tencentyun.com/ubuntu noble-backports/restricted amd64 Components [212 B]
+Get:26 http://mirrors.tencentyun.com/ubuntu noble-backports/universe amd64 Packages [31.0 kB]
+Get:27 http://mirrors.tencentyun.com/ubuntu noble-backports/universe Translation-en [18.6 kB]
+Get:28 http://mirrors.tencentyun.com/ubuntu noble-backports/universe amd64 Components [10.6 kB]
+Get:29 http://mirrors.tencentyun.com/ubuntu noble-backports/universe amd64 c-n-f Metadata [1,484 B]
+Get:30 http://mirrors.tencentyun.com/ubuntu noble-backports/multiverse amd64 Packages [748 B]
+Get:31 http://mirrors.tencentyun.com/ubuntu noble-backports/multiverse Translation-en [340 B]
+Get:32 http://mirrors.tencentyun.com/ubuntu noble-backports/multiverse amd64 Components [212 B]
+Get:33 http://mirrors.tencentyun.com/ubuntu noble-security/main amd64 Packages [1,668 kB]
+Get:34 http://mirrors.tencentyun.com/ubuntu noble-security/main Translation-en [264 kB]
+Get:35 http://mirrors.tencentyun.com/ubuntu noble-security/main amd64 Components [21.9 kB]
+Get:36 http://mirrors.tencentyun.com/ubuntu noble-security/main amd64 c-n-f Metadata [11.0 kB]
+Get:37 http://mirrors.tencentyun.com/ubuntu noble-security/restricted amd64 Packages [2,943 kB]
+Get:38 http://mirrors.tencentyun.com/ubuntu noble-security/restricted Translation-en [685 kB]
+Get:39 http://mirrors.tencentyun.com/ubuntu noble-security/restricted amd64 Components [212 B]
+Get:40 http://mirrors.tencentyun.com/ubuntu noble-security/restricted amd64 c-n-f Metadata [544 B]
+Get:41 http://mirrors.tencentyun.com/ubuntu noble-security/universe amd64 Packages [1,187 kB]
+Get:42 http://mirrors.tencentyun.com/ubuntu noble-security/universe Translation-en [229 kB]
+Get:43 http://mirrors.tencentyun.com/ubuntu noble-security/universe amd64 Components [74.2 kB]
+Get:44 http://mirrors.tencentyun.com/ubuntu noble-security/universe amd64 c-n-f Metadata [23.1 kB]
+Get:45 http://mirrors.tencentyun.com/ubuntu noble-security/multiverse amd64 Packages [28.8 kB]
+Get:46 http://mirrors.tencentyun.com/ubuntu noble-security/multiverse Translation-en [7,656 B]
+Get:47 http://mirrors.tencentyun.com/ubuntu noble-security/multiverse amd64 Components [208 B]
+Fetched 16.6 MB in 2s (8,182 kB/s)
+Reading package lists...
+Building dependency tree...
+Reading state information...
+121 packages can be upgraded. Run 'apt list --upgradable' to see them.
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Reading package lists...
+Building dependency tree...
+Reading state information...
+git is already the newest version (1:2.43.0-1ubuntu7.3).
+git set to manually installed.
+The following additional packages will be installed:
+  dpkg dpkg-dev fakeroot g++ g++-13 g++-13-x86-64-linux-gnu
+  g++-x86-64-linux-gnu libalgorithm-diff-perl libalgorithm-diff-xs-perl
+  libalgorithm-merge-perl libcurl3t64-gnutls libcurl4t64 libdpkg-perl
+  libfakeroot libstdc++-13-dev lto-disabled-list
+Suggested packages:
+  debsig-verify debian-keyring g++-multilib g++-13-multilib gcc-13-doc bzr
+  libstdc++-13-doc
+The following NEW packages will be installed:
+  build-essential dpkg-dev fakeroot g++ g++-13 g++-13-x86-64-linux-gnu
+  g++-x86-64-linux-gnu libalgorithm-diff-perl libalgorithm-diff-xs-perl
+  libalgorithm-merge-perl libfakeroot libstdc++-13-dev lto-disabled-list
+The following packages will be upgraded:
+  curl dpkg libcurl3t64-gnutls libcurl4t64 libdpkg-perl
+5 upgraded, 13 newly installed, 0 to remove and 116 not upgraded.
+Need to get 18.3 MB of archives.
+After this operation, 59.0 MB of additional disk space will be used.
+Get:1 http://mirrors.tencentyun.com/ubuntu noble-updates/main amd64 dpkg amd64 1.22.6ubuntu6.6 [1,282 kB]
+Get:2 http://mirrors.tencentyun.com/ubuntu noble-updates/main amd64 libstdc++-13-dev amd64 13.3.0-6ubuntu2~24.04.1 [2,420 kB]
+Get:3 http://mirrors.tencentyun.com/ubuntu noble-updates/main amd64 g++-13-x86-64-linux-gnu amd64 13.3.0-6ubuntu2~24.04.1 [12.2 MB]
+Get:4 http://mirrors.tencentyun.com/ubuntu noble-updates/main amd64 g++-13 amd64 13.3.0-6ubuntu2~24.04.1 [16.0 kB]
+Get:5 http://mirrors.tencentyun.com/ubuntu noble/main amd64 g++-x86-64-linux-gnu amd64 4:13.2.0-7ubuntu1 [964 B]
+Get:6 http://mirrors.tencentyun.com/ubuntu noble/main amd64 g++ amd64 4:13.2.0-7ubuntu1 [1,100 B]
+Get:7 http://mirrors.tencentyun.com/ubuntu noble-updates/main amd64 libdpkg-perl all 1.22.6ubuntu6.6 [268 kB]
+Get:8 http://mirrors.tencentyun.com/ubuntu noble/main amd64 lto-disabled-list all 47 [12.4 kB]
+Get:9 http://mirrors.tencentyun.com/ubuntu noble-updates/main amd64 dpkg-dev all 1.22.6ubuntu6.6 [1,074 kB]
+Get:10 http://mirrors.tencentyun.com/ubuntu noble/main amd64 build-essential amd64 12.10ubuntu1 [4,928 B]
+Get:11 http://mirrors.tencentyun.com/ubuntu noble-updates/main amd64 curl amd64 8.5.0-2ubuntu10.9 [227 kB]
+Get:12 http://mirrors.tencentyun.com/ubuntu noble-updates/main amd64 libcurl4t64 amd64 8.5.0-2ubuntu10.9 [342 kB]
+Get:13 http://mirrors.tencentyun.com/ubuntu noble/main amd64 libfakeroot amd64 1.33-1 [32.4 kB]
+Get:14 http://mirrors.tencentyun.com/ubuntu noble/main amd64 fakeroot amd64 1.33-1 [67.2 kB]
+Get:15 http://mirrors.tencentyun.com/ubuntu noble/main amd64 libalgorithm-diff-perl all 1.201-1 [41.8 kB]
+Get:16 http://mirrors.tencentyun.com/ubuntu noble/main amd64 libalgorithm-diff-xs-perl amd64 0.04-8build3 [11.2 kB]
+Get:17 http://mirrors.tencentyun.com/ubuntu noble/main amd64 libalgorithm-merge-perl all 0.08-5 [11.4 kB]
+Get:18 http://mirrors.tencentyun.com/ubuntu noble-updates/main amd64 libcurl3t64-gnutls amd64 8.5.0-2ubuntu10.9 [334 kB]
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Teletype
+dpkg-preconfigure: unable to re-open stdin: 
+Fetched 18.3 MB in 1s (12.7 MB/s)
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 89587 files and directories currently installed.)
+Preparing to unpack .../dpkg_1.22.6ubuntu6.6_amd64.deb ...
+Unpacking dpkg (1.22.6ubuntu6.6) over (1.22.6ubuntu6.5) ...
+Setting up dpkg (1.22.6ubuntu6.6) ...
+Selecting previously unselected package libstdc++-13-dev:amd64.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 89587 files and directories currently installed.)
+Preparing to unpack .../00-libstdc++-13-dev_13.3.0-6ubuntu2~24.04.1_amd64.deb ...
+Unpacking libstdc++-13-dev:amd64 (13.3.0-6ubuntu2~24.04.1) ...
+Selecting previously unselected package g++-13-x86-64-linux-gnu.
+Preparing to unpack .../01-g++-13-x86-64-linux-gnu_13.3.0-6ubuntu2~24.04.1_amd64.deb ...
+Unpacking g++-13-x86-64-linux-gnu (13.3.0-6ubuntu2~24.04.1) ...
+Selecting previously unselected package g++-13.
+Preparing to unpack .../02-g++-13_13.3.0-6ubuntu2~24.04.1_amd64.deb ...
+Unpacking g++-13 (13.3.0-6ubuntu2~24.04.1) ...
+Selecting previously unselected package g++-x86-64-linux-gnu.
+Preparing to unpack .../03-g++-x86-64-linux-gnu_4%3a13.2.0-7ubuntu1_amd64.deb ...
+Unpacking g++-x86-64-linux-gnu (4:13.2.0-7ubuntu1) ...
+Selecting previously unselected package g++.
+Preparing to unpack .../04-g++_4%3a13.2.0-7ubuntu1_amd64.deb ...
+Unpacking g++ (4:13.2.0-7ubuntu1) ...
+Preparing to unpack .../05-libdpkg-perl_1.22.6ubuntu6.6_all.deb ...
+Unpacking libdpkg-perl (1.22.6ubuntu6.6) over (1.22.6ubuntu6.5) ...
+Selecting previously unselected package lto-disabled-list.
+Preparing to unpack .../06-lto-disabled-list_47_all.deb ...
+Unpacking lto-disabled-list (47) ...
+Selecting previously unselected package dpkg-dev.
+Preparing to unpack .../07-dpkg-dev_1.22.6ubuntu6.6_all.deb ...
+Unpacking dpkg-dev (1.22.6ubuntu6.6) ...
+Selecting previously unselected package build-essential.
+Preparing to unpack .../08-build-essential_12.10ubuntu1_amd64.deb ...
+Unpacking build-essential (12.10ubuntu1) ...
+Preparing to unpack .../09-curl_8.5.0-2ubuntu10.9_amd64.deb ...
+Unpacking curl (8.5.0-2ubuntu10.9) over (8.5.0-2ubuntu10.7) ...
+Preparing to unpack .../10-libcurl4t64_8.5.0-2ubuntu10.9_amd64.deb ...
+Unpacking libcurl4t64:amd64 (8.5.0-2ubuntu10.9) over (8.5.0-2ubuntu10.7) ...
+Selecting previously unselected package libfakeroot:amd64.
+Preparing to unpack .../11-libfakeroot_1.33-1_amd64.deb ...
+Unpacking libfakeroot:amd64 (1.33-1) ...
+Selecting previously unselected package fakeroot.
+Preparing to unpack .../12-fakeroot_1.33-1_amd64.deb ...
+Unpacking fakeroot (1.33-1) ...
+Selecting previously unselected package libalgorithm-diff-perl.
+Preparing to unpack .../13-libalgorithm-diff-perl_1.201-1_all.deb ...
+Unpacking libalgorithm-diff-perl (1.201-1) ...
+Selecting previously unselected package libalgorithm-diff-xs-perl:amd64.
+Preparing to unpack .../14-libalgorithm-diff-xs-perl_0.04-8build3_amd64.deb ...
+Unpacking libalgorithm-diff-xs-perl:amd64 (0.04-8build3) ...
+Selecting previously unselected package libalgorithm-merge-perl.
+Preparing to unpack .../15-libalgorithm-merge-perl_0.08-5_all.deb ...
+Unpacking libalgorithm-merge-perl (0.08-5) ...
+Preparing to unpack .../16-libcurl3t64-gnutls_8.5.0-2ubuntu10.9_amd64.deb ...
+Unpacking libcurl3t64-gnutls:amd64 (8.5.0-2ubuntu10.9) over (8.5.0-2ubuntu10.7) ...
+Setting up lto-disabled-list (47) ...
+Setting up libcurl4t64:amd64 (8.5.0-2ubuntu10.9) ...
+Setting up libalgorithm-diff-perl (1.201-1) ...
+Setting up libcurl3t64-gnutls:amd64 (8.5.0-2ubuntu10.9) ...
+Setting up libfakeroot:amd64 (1.33-1) ...
+Setting up fakeroot (1.33-1) ...
+update-alternatives: using /usr/bin/fakeroot-sysv to provide /usr/bin/fakeroot (fakeroot) in auto mode
+Setting up libdpkg-perl (1.22.6ubuntu6.6) ...
+Setting up curl (8.5.0-2ubuntu10.9) ...
+Setting up libalgorithm-diff-xs-perl:amd64 (0.04-8build3) ...
+Setting up libstdc++-13-dev:amd64 (13.3.0-6ubuntu2~24.04.1) ...
+Setting up libalgorithm-merge-perl (0.08-5) ...
+Setting up g++-13-x86-64-linux-gnu (13.3.0-6ubuntu2~24.04.1) ...
+Setting up dpkg-dev (1.22.6ubuntu6.6) ...
+Setting up g++-x86-64-linux-gnu (4:13.2.0-7ubuntu1) ...
+Setting up g++-13 (13.3.0-6ubuntu2~24.04.1) ...
+Setting up g++ (4:13.2.0-7ubuntu1) ...
+update-alternatives: using /usr/bin/g++ to provide /usr/bin/c++ (c++) in auto mode
+Setting up build-essential (12.10ubuntu1) ...
+Processing triggers for man-db (2.12.0-4build2) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.7) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Teletype
+
+Running kernel seems to be up-to-date.
+
+Restarting services...
+ systemctl restart fwupd.service packagekit.service
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+[38;5;79m2026-05-19 19:27:33 - Installing pre-requisites[0m
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Hit:1 http://mirrors.tencentyun.com/ubuntu noble InRelease
+Hit:2 http://mirrors.tencentyun.com/ubuntu noble-updates InRelease
+Hit:3 http://mirrors.tencentyun.com/ubuntu noble-backports InRelease
+Hit:4 http://mirrors.tencentyun.com/ubuntu noble-security InRelease
+Reading package lists...
+Building dependency tree...
+Reading state information...
+116 packages can be upgraded. Run 'apt list --upgradable' to see them.
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Reading package lists...
+Building dependency tree...
+Reading state information...
+ca-certificates is already the newest version (20240203).
+ca-certificates set to manually installed.
+curl is already the newest version (8.5.0-2ubuntu10.9).
+gnupg is already the newest version (2.4.4-2ubuntu17.4).
+gnupg set to manually installed.
+The following NEW packages will be installed:
+  apt-transport-https
+0 upgraded, 1 newly installed, 0 to remove and 116 not upgraded.
+Need to get 3,970 B of archives.
+After this operation, 36.9 kB of additional disk space will be used.
+Get:1 http://mirrors.tencentyun.com/ubuntu noble-updates/universe amd64 apt-transport-https all 2.8.3 [3,970 B]
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Teletype
+dpkg-preconfigure: unable to re-open stdin: 
+Fetched 3,970 B in 0s (33.2 kB/s)
+Selecting previously unselected package apt-transport-https.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 90893 files and directories currently installed.)
+Preparing to unpack .../apt-transport-https_2.8.3_all.deb ...
+Unpacking apt-transport-https (2.8.3) ...
+Setting up apt-transport-https (2.8.3) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Teletype
+
+Running kernel seems to be up-to-date.
+
+No services need to be restarted.
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Hit:1 http://mirrors.tencentyun.com/ubuntu noble InRelease
+Hit:2 http://mirrors.tencentyun.com/ubuntu noble-updates InRelease
+Hit:3 http://mirrors.tencentyun.com/ubuntu noble-backports InRelease
+Hit:4 http://mirrors.tencentyun.com/ubuntu noble-security InRelease
+Get:5 https://deb.nodesource.com/node_24.x nodistro InRelease [12.1 kB]
+Get:6 https://deb.nodesource.com/node_24.x nodistro/main amd64 Packages [6,694 B]
+Fetched 18.8 kB in 0s (45.7 kB/s)
+Reading package lists...
+Building dependency tree...
+Reading state information...
+116 packages can be upgraded. Run 'apt list --upgradable' to see them.
+[1;34m2026-05-19 19:27:41 - Repository configured successfully.[0m
+[38;5;79m2026-05-19 19:27:41 - To install Node.js, run: apt install nodejs -y[0m
+[38;5;79m2026-05-19 19:27:41 - You can use N|solid Runtime as a node.js alternative[0m
+[1;32m2026-05-19 19:27:41 - To install N|solid Runtime, run: apt install nsolid -y 
+[0m
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following NEW packages will be installed:
+  nodejs
+0 upgraded, 1 newly installed, 0 to remove and 116 not upgraded.
+Need to get 38.3 MB of archives.
+After this operation, 236 MB of additional disk space will be used.
+Get:1 https://deb.nodesource.com/node_24.x nodistro/main amd64 nodejs amd64 24.15.0-1nodesource1 [38.3 MB]
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Teletype
+dpkg-preconfigure: unable to re-open stdin: 
+Fetched 38.3 MB in 3s (15.3 MB/s)
+Selecting previously unselected package nodejs.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 90897 files and directories currently installed.)
+Preparing to unpack .../nodejs_24.15.0-1nodesource1_amd64.deb ...
+Unpacking nodejs (24.15.0-1nodesource1) ...
+Setting up nodejs (24.15.0-1nodesource1) ...
+Processing triggers for man-db (2.12.0-4build2) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Teletype
+
+Running kernel seems to be up-to-date.
+
+No services need to be restarted.
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+v24.15.0
+11.12.1
+npm error code EACCES
+npm error syscall mkdir
+npm error path /usr/lib/node_modules/@anthropic-ai
+npm error errno -13
+npm error Error: EACCES: permission denied, mkdir '/usr/lib/node_modules/@anthropic-ai'
+npm error     at async mkdir (node:internal/fs/promises:859:10)
+npm error     at async /usr/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/reify.js:585:20
+npm error     at async Promise.allSettled (index 0)
+npm error     at async #reifyPackages (/usr/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/reify.js:317:11)
+npm error     at async Arborist.reify (/usr/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/reify.js:127:5)
+npm error     at async Install.exec (/usr/lib/node_modules/npm/lib/commands/install.js:146:5)
+npm error     at async Npm.exec (/usr/lib/node_modules/npm/lib/npm.js:193:9)
+npm error     at async module.exports (/usr/lib/node_modules/npm/lib/cli/entry.js:67:5) {
+npm error   errno: -13,
+npm error   code: 'EACCES',
+npm error   syscall: 'mkdir',
+npm error   path: '/usr/lib/node_modules/@anthropic-ai'
+npm error }
+npm error
+npm error The operation was rejected by your operating system.
+npm error It is likely you do not have the permissions to access this file as the current user
+npm error
+npm error If you believe this might be a permissions issue, please double-check the permissions of the file and its containing directories, or try running the command again as root/Administrator.
+npm notice
+npm notice New minor version of npm available! 11.12.1 -> 11.14.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.14.1
+npm notice To update run: npm install -g npm@11.14.1
+npm notice
+npm error A complete log of this run can be found in: /home/ubuntu/.npm/_logs/2026-05-19T11_27_50_296Z-debug-0.log
+Distributor ID:	Ubuntu
+Description:	Ubuntu 24.04.4 LTS
+Release:	24.04
+Codename:	noble
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Hit:1 http://mirrors.tencentyun.com/ubuntu noble InRelease
+Hit:2 http://mirrors.tencentyun.com/ubuntu noble-updates InRelease
+Hit:3 http://mirrors.tencentyun.com/ubuntu noble-backports InRelease
+Hit:4 http://mirrors.tencentyun.com/ubuntu noble-security InRelease
+Hit:5 https://deb.nodesource.com/node_24.x nodistro InRelease
+Reading package lists...
+Building dependency tree...
+Reading state information...
+116 packages can be upgraded. Run 'apt list --upgradable' to see them.
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Reading package lists...
+Building dependency tree...
+Reading state information...
+curl is already the newest version (8.5.0-2ubuntu10.9).
+git is already the newest version (1:2.43.0-1ubuntu7.3).
+build-essential is already the newest version (12.10ubuntu1).
+0 upgraded, 0 newly installed, 0 to remove and 116 not upgraded.
+[38;5;79m2026-05-19 19:28:49 - Installing pre-requisites[0m
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Hit:1 http://mirrors.tencentyun.com/ubuntu noble InRelease
+Hit:2 http://mirrors.tencentyun.com/ubuntu noble-updates InRelease
+Hit:3 http://mirrors.tencentyun.com/ubuntu noble-backports InRelease
+Hit:4 http://mirrors.tencentyun.com/ubuntu noble-security InRelease
+Hit:5 https://deb.nodesource.com/node_24.x nodistro InRelease
+Reading package lists...
+Building dependency tree...
+Reading state information...
+116 packages can be upgraded. Run 'apt list --upgradable' to see them.
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Reading package lists...
+Building dependency tree...
+Reading state information...
+apt-transport-https is already the newest version (2.8.3).
+ca-certificates is already the newest version (20240203).
+curl is already the newest version (8.5.0-2ubuntu10.9).
+gnupg is already the newest version (2.4.4-2ubuntu17.4).
+0 upgraded, 0 newly installed, 0 to remove and 116 not upgraded.
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Hit:1 http://mirrors.tencentyun.com/ubuntu noble InRelease
+Hit:2 http://mirrors.tencentyun.com/ubuntu noble-updates InRelease
+Hit:3 http://mirrors.tencentyun.com/ubuntu noble-backports InRelease
+Hit:4 https://deb.nodesource.com/node_24.x nodistro InRelease
+Hit:5 http://mirrors.tencentyun.com/ubuntu noble-security InRelease
+Reading package lists...
+Building dependency tree...
+Reading state information...
+116 packages can be upgraded. Run 'apt list --upgradable' to see them.
+[1;34m2026-05-19 19:28:54 - Repository configured successfully.[0m
+[38;5;79m2026-05-19 19:28:54 - To install Node.js, run: apt install nodejs -y[0m
+[38;5;79m2026-05-19 19:28:54 - You can use N|solid Runtime as a node.js alternative[0m
+[1;32m2026-05-19 19:28:54 - To install N|solid Runtime, run: apt install nsolid -y 
+[0m
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Reading package lists...
+Building dependency tree...
+Reading state information...
+nodejs is already the newest version (24.15.0-1nodesource1).
+0 upgraded, 0 newly installed, 0 to remove and 116 not upgraded.
+v24.15.0
+11.12.1
+
+added 2 packages in 3s
+npm notice
+npm notice New minor version of npm available! 11.12.1 -> 11.14.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.14.1
+npm notice To update run: npm install -g npm@11.14.1
+npm notice
+2.1.144 (Claude Code)
+Usage: claude [options] [command] [prompt]
+
+Claude Code - starts an interactive session by default, use -p/--print for
+non-interactive output
+
+Arguments:
+  prompt                                            Your prompt
+
+Options:
+  --add-dir <directories...>                        Additional directories to allow tool access to
+  --agent <agent>                                   Agent for the current session. Overrides the 'agent' setting.
+  --agents <json>                                   JSON object defining custom agents (e.g. '{"reviewer": {"description": "Reviews code", "prompt": "You are a code reviewer"}}')
+  --allow-dangerously-skip-permissions              Enable bypassing all permission checks as an option, without it being enabled by default. Recommended only for sandboxes with no internet access.
+  --allowedTools, --allowed-tools <tools...>        Comma or space-separated list of tool names to allow (e.g. "Bash(git *) Edit")
+  --append-system-prompt <prompt>                   Append a system prompt to the default system prompt
+  --bare                                            Minimal mode: skip hooks, LSP, plugin sync, attribution, auto-memory, background prefetches, keychain reads, and CLAUDE.md auto-discovery. Sets CLAUDE_CODE_SIMPLE=1. Anthropic auth is strictly ANTHROPIC_API_KEY or apiKeyHelper via --settings (OAuth and keychain are never read). 3P providers (Bedrock/Vertex/Foundry) use their own credentials. Skills still resolve via /skill-name. Explicitly provide context via: --system-prompt[-file], --append-system-prompt[-file], --add-dir (CLAUDE.md dirs), --mcp-config, --settings, --agents, --plugin-dir.
+  --betas <betas...>                                Beta headers to include in API requests (API key users only)
+  --brief                                           Enable SendUserMessage tool for agent-to-user communication
+  --chrome                                          Enable Claude in Chrome integration
+  -c, --continue                                    Continue the most recent conversation in the current directory
+  --dangerously-skip-permissions                    Bypass all permission checks. Recommended only for sandboxes with no internet access.
+  -d, --debug [filter]                              Enable debug mode with optional category filtering (e.g., "api,hooks" or "!1p,!file")
+  --debug-file <path>                               Write debug logs to a specific file path (implicitly enables debug mode)
+  --disable-slash-commands                          Disable all skills
+  --disallowedTools, --disallowed-tools <tools...>  Comma or space-separated list of tool names to deny (e.g. "Bash(git *) Edit")
+  --effort <level>                                  Effort level for the current session (low, medium, high, xhigh, max)
+  --exclude-dynamic-system-prompt-sections          Move per-machine sections (cwd, env info, memory paths, git status) from the system prompt into the first user message. Improves cross-user prompt-cache reuse. Only applies with the default system prompt (ignored with --system-prompt). (default: false)
+  --fallback-model <model>                          Enable automatic fallback to specified model when default model is overloaded (only works with --print)
+  --file <specs...>                                 File resources to download at startup. Format: file_id:relative_path (e.g., --file file_abc:doc.txt file_def:img.png)
+  --fork-session                                    When resuming, create a new session ID instead of reusing the original (use with --resume or --continue)
+  --from-pr [value]                                 Resume a session linked to a PR by PR number/URL, or open interactive picker with optional search term
+  -h, --help                                        Display help for command
+  --ide                                             Automatically connect to IDE on startup if exactly one valid IDE is available
+  --include-hook-events                             Include all hook lifecycle events in the output stream (only works with --output-format=stream-json)
+  --include-partial-messages                        Include partial message chunks as they arrive (only works with --print and --output-format=stream-json)
+  --input-format <format>                           Input format (only works with --print): "text" (default), or "stream-json" (realtime streaming input) (choices: "text", "stream-json")
+  --json-schema <schema>                            JSON Schema for structured output validation. Example: {"type":"object","properties":{"name":{"type":"string"}},"required":["name"]}
+  --max-budget-usd <amount>                         Maximum dollar amount to spend on API calls (only works with --print)
+  --mcp-config <configs...>                         Load MCP servers from JSON files or strings (space-separated)
+  --mcp-debug                                       [DEPRECATED. Use --debug instead] Enable MCP debug mode (shows MCP server errors)
+  --model <model>                                   Model for the current session. Provide an alias for the latest model (e.g. 'sonnet' or 'opus') or a model's full name (e.g. 'claude-sonnet-4-6').
+  -n, --name <name>                                 Set a display name for this session (shown in the prompt box, /resume picker, and terminal title)
+  --no-chrome                                       Disable Claude in Chrome integration
+  --no-session-persistence                          Disable session persistence - sessions will not be saved to disk and cannot be resumed (only works with --print)
+  --output-format <format>                          Output format (only works with --print): "text" (default), "json" (single result), or "stream-json" (realtime streaming) (choices: "text", "json", "stream-json")
+  --permission-mode <mode>                          Permission mode to use for the session (choices: "acceptEdits", "auto", "bypassPermissions", "default", "dontAsk", "plan")
+  --plugin-dir <path>                               Load a plugin from a directory or .zip for this session only (repeatable: --plugin-dir A --plugin-dir B.zip) (default: [])
+  --plugin-url <url>                                Fetch a plugin .zip from a URL for this session only (repeatable: --plugin-url A --plugin-url B) (default: [])
+  -p, --print                                       Print response and exit (useful for pipes). Note: The workspace trust dialog is skipped when Claude is run in non-interactive mode (via -p, or when stdout is not a TTY, e.g. piped or redirected output). Only use this in directories you trust. Settings files that fail validation are silently ignored in this mode (no error dialog is shown).
+  --remote-control [name]                           Start an interactive session with Remote Control enabled (optionally named)
+  --remote-control-session-name-prefix <prefix>     Prefix for auto-generated Remote Control session names (default: hostname)
+  --replay-user-messages                            Re-emit user messages from stdin back on stdout for acknowledgment (only works with --input-format=stream-json and --output-format=stream-json)
+  -r, --resume [value]                              Resume a conversation by session ID, or open interactive picker with optional search term
+  --session-id <uuid>                               Use a specific session ID for the conversation (must be a valid UUID)
+  --setting-sources <sources>                       Comma-separated list of setting sources to load (user, project, local).
+  --settings <file-or-json>                         Path to a settings JSON file or a JSON string to load additional settings from
+  --strict-mcp-config                               Only use MCP servers from --mcp-config, ignoring all other MCP configurations
+  --system-prompt <prompt>                          System prompt to use for the session
+  --tmux                                            Create a tmux session for the worktree (requires --worktree). Uses iTerm2 native panes when available; use --tmux=classic for traditional tmux.
+  --tools <tools...>                                Specify the list of available tools from the built-in set. Use "" to disable all tools, "default" to use all tools, or specify tool names (e.g. "Bash,Edit,Read").
+  --verbose                                         Override verbose mode setting from config
+  -v, --version                                     Output the version number
+  -w, --worktree [name]                             Create a new git worktree for this session (optionally specify a name)
+
+Commands:
+  agents [options]                                  Manage background agents
+  auth                                              Manage authentication
+  auto-mode                                         Inspect auto mode classifier configuration
+  doctor                                            Check the health of your Claude Code auto-updater. Note: The workspace trust dialog is skipped and stdio servers from .mcp.json are spawned for health checks. Only use this command in directories you trust.
+  install [options] [target]                        Install Claude Code native build. Use [target] to specify version (stable, latest, or specific version)
+  mcp                                               Configure and manage MCP servers
+  plugin|plugins                                    Manage Claude Code plugins
+  project                                           Manage Claude Code project state
+  setup-token                                       Set up a long-lived authentication token (requires Claude subscription)
+  ultrareview [options] [target]                    Run a cloud-hosted multi-agent code review of the current branch (or a PR number / base branch) and print the findings
+  update|upgrade                                    Check for updates and install if available
