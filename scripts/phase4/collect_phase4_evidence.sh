@@ -21,7 +21,16 @@ mkdir -p "$OUTPUT_DIR"
   fi
 } > "$OUTPUT_DIR/allowlist-check.log"
 
-for name in restart-recovery multi-project-scheduler pm-notification; do
+if [ -f /home/ubuntu/cccagents/projects/phase4-recovery-smoke/08-logs/restart-recovery.jsonl ]; then
+  cp /home/ubuntu/cccagents/projects/phase4-recovery-smoke/08-logs/restart-recovery.jsonl "$OUTPUT_DIR/restart-recovery.log"
+else
+  {
+    date -u +%Y-%m-%dT%H:%M:%SZ
+    printf 'restart-recovery evidence pending live smoke\n'
+  } > "$OUTPUT_DIR/restart-recovery.log"
+fi
+
+for name in multi-project-scheduler pm-notification; do
   {
     date -u +%Y-%m-%dT%H:%M:%SZ
     printf '%s evidence pending live smoke\n' "$name"
