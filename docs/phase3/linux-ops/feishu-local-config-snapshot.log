@@ -1,0 +1,11 @@
+2026-05-19T15:11:35Z
+env_path=/home/ubuntu/.hermes/.env
+env_mode=600
+hermes_dir_mode=700
+FEISHU_APP_ID=[REDACTED]
+FEISHU_APP_SECRET=[REDACTED]
+FEISHU_VERIFICATION_TOKEN=[REDACTED]
+FEISHU_ENCRYPT_KEY=[REDACTED]
+GATEWAY_ALLOW_ALL_USERS=true
+callback_url=https://feishu.cccai.store/webhook/feishu
+feishu.cccai.store=124.156.192.85

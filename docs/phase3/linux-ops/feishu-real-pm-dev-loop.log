@@ -1,0 +1,4 @@
+2026-05-19T15:07:18Z
+file_exists=true
+file_content=1213hello from Feishu PM to DEV
+-rw-rw-r-- 1 ubuntu ubuntu 31 May 19 23:02 /home/ubuntu/cccagents/workspaces/phase35-feishu-smoke/repo/hello-from-feishu-dev.txt

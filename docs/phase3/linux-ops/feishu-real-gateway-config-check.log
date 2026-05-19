@@ -1,0 +1,20 @@
+2026-05-19T14:42:21Z
+hermes_env=present
+FEISHU_APP_ID=[REDACTED]
+FEISHU_APP_SECRET=[REDACTED]
+usage: hermes gateway setup [-h]
+
+options:
+  -h, --help  show this help message and exit
+usage: hermes gateway run [-h] [-v] [-q] [--replace] [--accept-hooks]
+
+options:
+  -h, --help      show this help message and exit
+  -v, --verbose   Increase stderr log verbosity (-v=INFO, -vv=DEBUG)
+  -q, --quiet     Suppress all stderr log output
+  --replace       Replace any existing gateway instance (useful for systemd)
+  --accept-hooks  Auto-approve unseen shell hooks without a TTY prompt
+                  (equivalent to HERMES_ACCEPT_HOOKS=1 / hooks_auto_accept:
+                  true).
+Gateways:
+  ✗ default (current)        — not running

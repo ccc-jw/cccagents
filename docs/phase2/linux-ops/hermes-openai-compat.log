@@ -1,0 +1,26 @@
+2026-05-19T13:14:03Z
+Config path: /home/ubuntu/.hermes/config.yaml
+Env path: /home/ubuntu/.hermes/.env
+✓ Set model.provider = custom in /home/ubuntu/.hermes/config.yaml
+✓ Set model.base_url = http://cccai.store in /home/ubuntu/.hermes/config.yaml
+✓ Set model.default = qwen3.6-plus in /home/ubuntu/.hermes/config.yaml
+Configured Hermes custom endpoint with redacted key.
+
+session_id: 20260519_211407_d439cf
+
+--- Gate conclusion ---
+Result: FAIL / BLOCKED
+
+Hermes created an OpenAI client with provider=custom base_url=http://cccai.store model=qwen3.6-plus, so network connectivity and credentials are accepted.
+
+Direct OpenAI-compatible curl verification against http://cccai.store/v1/chat/completions returns content=OK.
+
+Hermes chat verification did not print OK. Hermes logs show repeated warnings:
+Empty response (no content or reasoning) — retry 1/3, 2/3, 3/3.
+
+Observed gateway streaming shape:
+- early SSE chunks contain delta.reasoning_content with delta.content=null
+- later SSE chunk contains delta.content="OK"
+
+Current conclusion:
+Hermes reaches the user gateway, but the installed Hermes streaming parser/consumer does not successfully surface qwen3.6-plus final content for this endpoint. Phase 2 OpenAI compatibility gate is blocked until we either configure Hermes to use a compatible non-streaming/custom response mode, configure a model/provider route Hermes can parse, or patch Hermes handling for reasoning_content-first OpenAI-compatible streams.

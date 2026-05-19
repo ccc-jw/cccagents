@@ -1,0 +1,76 @@
+2026-05-19T14:48:34Z
+
+┌─────────────────────────────────────────────────────────┐
+│             ⚕ Gateway Setup                            │
+├─────────────────────────────────────────────────────────┤
+│  Configure messaging platforms and the gateway service. │
+│  Press Ctrl+C at any time to exit.                     │
+└─────────────────────────────────────────────────────────┘
+
+  Gateway service is not installed yet.
+  You'll be offered to install it after configuring platforms.
+
+
+◆ Messaging Platforms
+Select a platform to configure:
+  ○ 📱 Telegram  (not configured)
+  ○ 💬 Discord  (not configured)
+  ○ 💼 Slack  (not configured)
+  ○ 🔐 Matrix  (not configured)
+  ○ 💬 Mattermost  (not configured)
+  ○ 📲 WhatsApp  (not configured)
+  ○ 📡 Signal  (not configured)
+  ○ 📧 Email  (not configured)
+  ○ 📱 SMS (Twilio)  (not configured)
+  ○ 💬 DingTalk  (not configured)
+  ○ 🪽 Feishu / Lark  (configured)
+  ○ 💬 WeCom (Enterprise WeChat)  (not configured)
+  ○ 💬 WeCom Callback (Self-Built App)  (not configured)
+  ○ 💬 Weixin / WeChat  (not configured)
+  ○ 💬 BlueBubbles (iMessage)  (not configured)
+  ○ 🐧 QQ Bot  (not configured)
+  ○ 💎 Yuanbao  (not configured)
+  ○ 💬 Google Chat  (not configured)
+  ○ 💬 IRC  (not configured)
+  ○ 💚 LINE  (not configured)
+  ○ 🔒 SimpleX Chat  (not configured)
+  ○ 💼 Microsoft Teams  (not configured)
+  ● Done
+    Enter for default (23)  Ctrl+C to exit
+  Select [1-23] (23): 
+usage: hermes config [-h] {show,edit,set,path,env-path,check,migrate} ...
+
+Manage Hermes Agent configuration
+
+positional arguments:
+  {show,edit,set,path,env-path,check,migrate}
+    show                Show current configuration
+    edit                Open config file in editor
+    set                 Set a configuration value
+    path                Print config file path
+    env-path            Print .env file path
+    check               Check for missing/outdated config
+    migrate             Update config with new options
+
+options:
+  -h, --help            show this help message and exit
+usage: hermes webhook [-h] {subscribe,add,list,ls,remove,rm,test} ...
+
+Create, list, and remove webhook subscriptions for event-driven agent
+activation
+
+positional arguments:
+  {subscribe,add,list,ls,remove,rm,test}
+    subscribe (add)     Create a webhook subscription
+    list (ls)           List all dynamic subscriptions
+    remove (rm)         Remove a subscription
+    test                Send a test POST to a webhook route
+
+options:
+  -h, --help            show this help message and exit
+✗ Gateway is not running
+
+To start:
+  hermes gateway run      # Run in foreground
+  hermes gateway install  # Install as user service
+  sudo hermes gateway install --system  # Install as boot-time system service

@@ -1,5 +1,7 @@
 # cccagents Phase 2 多角色流程设计
 
+> Superseded on 2026-05-19: 本文把角色设计成了本地 Python 工作流原型。根据用户确认，PM/PDM/RES/ARCH/DEV/TEST/SEC 必须运行在实际 Hermes 中。后续以 `docs/superpowers/specs/2026-05-19-cccagents-phase2-hermes-integration-design.md` 为准；本文仅作为流程规则和数据模型参考。
+
 日期：2026-05-19
 
 ## 1. 目标

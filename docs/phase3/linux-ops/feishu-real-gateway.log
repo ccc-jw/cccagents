@@ -1,0 +1,343 @@
+DEBUG tools.mcp_tool: No MCP servers configured
+INFO gateway.run: Starting Hermes Gateway...
+INFO gateway.run: Session storage: /home/ubuntu/.hermes/sessions
+INFO gateway.run: Agent budget: max_iterations=60 (agent.max_turns from config.yaml, or HERMES_MAX_ITERATIONS from .env, or default 90)
+INFO gateway.run: Secret redaction: ENABLED (tool output, logs, and chat responses are scrubbed before delivery)
+INFO gateway.run: Previous gateway exited cleanly — skipping session suspension
+INFO gateway.run: Connecting to feishu...
+INFO gateway.platforms.feishu: [Feishu] Connected in websocket mode (feishu)
+INFO gateway.run: ✓ feishu connected
+INFO gateway.run: Gateway running with 1 platform(s)
+INFO gateway.run: Channel directory built: 0 target(s)
+┌─────────────────────────────────────────────────────────┐
+│           ⚕ Hermes Gateway Starting...                 │
+├─────────────────────────────────────────────────────────┤
+│  Messaging platforms + cron scheduler                    │
+│  Press Ctrl+C to stop                                   │
+└─────────────────────────────────────────────────────────┘
+
+[Lark] [2026-05-19 22:58:18,122] [INFO] connected to wss://msg-frontier.feishu.cn/ws/v2?[REDACTED] [conn_id=7641617371908754392]
+INFO Lark: connected to wss://msg-frontier.feishu.cn/ws/v2?[REDACTED] [conn_id=7641617371908754392]
+INFO gateway.run: Press Ctrl+C to stop
+INFO gateway.run: Cron ticker started (interval=60s)
+INFO gateway.run: kanban dispatcher: embedded in gateway (interval=60.0s)
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+INFO gateway.platforms.feishu: [Feishu] Received raw message type=text message_id=om_x100b6ff3e715b8b8b3e5bb2ae57c563
+INFO gateway.platforms.feishu: [Feishu] Inbound dm message received: id=om_x100b6ff3e715b8b8b3e5bb2ae57c563 type=text chat_id=oc_1e066e430c750df91edf064a6a3193bf sender=user:ou_efc291e8806c47b8460cc26a447cc476 text='1' media=0
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+INFO gateway.platforms.feishu: [Feishu] Flushing text batch agent:main:feishu:dm:oc_1e066e430c750df91edf064a6a3193bf (1 chars)
+INFO gateway.run: inbound message: platform=feishu user=ou_efc291e8806c47b8460cc26a447cc476 chat=oc_1e066e430c750df91edf064a6a3193bf msg='1'
+INFO run_agent: Loaded environment variables from /home/ubuntu/.hermes/.env
+DEBUG gateway.run: No session model override: session=agent:main:feishu:dm:oc_1e066e430c750df91edf064a6a3193bf config_model=qwen3.6-plus override_keys=[]
+DEBUG gateway.run: run_agent resolved: model=qwen3.6-plus provider=custom session=agent:main:feishu:dm:oc_1e066e430c750df91edf064a6a3193bf
+INFO run_agent: OpenAI client created (agent_init, shared=True) thread=asyncio_1:134189819438784 provider=custom base_url=http://cccai.store/v1 model=qwen3.6-plus
+DEBUG agent.auxiliary_client: Auxiliary client: custom endpoint (qwen3.6-plus, api_mode=chat_completions)
+INFO agent.auxiliary_client: Vision auto-detect: using main provider custom (qwen3.6-plus)
+DEBUG gateway.platforms.feishu: [Feishu] Reaction added on message om_x100b6ff3e715b8b8b3e5bb2ae57c563 (operator_type=app, emoji=Typing)
+INFO agent.model_metadata: Could not detect context length for model 'qwen3.6-plus' at http://cccai.store/v1 — defaulting to 256,000 tokens (probe-down). Set model.context_length in config.yaml to override.
+INFO agent.auxiliary_client: Auxiliary auto-detect: using main provider custom (qwen3.6-plus)
+INFO agent.model_metadata: Could not detect context length for model 'qwen3.6-plus' at http://cccai.store/v1/ — defaulting to 256,000 tokens (probe-down). Set model.context_length in config.yaml to override.
+DEBUG gateway.run: Created new agent for session agent:main:feishu:dm:oc_1e066e430c750df91edf064a6a3193bf (sig=ae7a949ccc12975a)
+INFO agent.conversation_loop: conversation turn: session=20260519_225840_181d8d1f model=qwen3.6-plus provider=custom platform=feishu history=0 msg='1'
+INFO run_agent: OpenAI client created (chat_completion_stream_request, shared=False) thread=Thread-1 (_call):134189512910528 provider=custom base_url=http://cccai.store/v1 model=qwen3.6-plus
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+INFO run_agent: OpenAI client closed (stream_request_complete, shared=False, tcp_force_closed=0) thread=Thread-1 (_call):134189512910528 provider=custom base_url=http://cccai.store/v1 model=qwen3.6-plus
+INFO agent.conversation_loop: API call #1: model=qwen3.6-plus provider=custom in=17416 out=106 total=17522 latency=5.3s
+INFO agent.tool_executor: tool session_search completed (0.00s, 1518 chars)
+INFO run_agent: OpenAI client created (chat_completion_stream_request, shared=False) thread=Thread-2 (_call):134189512910528 provider=custom base_url=http://cccai.store/v1 model=qwen3.6-plus
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+INFO run_agent: OpenAI client closed (stream_request_complete, shared=False, tcp_force_closed=0) thread=Thread-2 (_call):134189512910528 provider=custom base_url=http://cccai.store/v1 model=qwen3.6-plus
+INFO agent.conversation_loop: API call #2: model=qwen3.6-plus provider=custom in=18178 out=113 total=18291 latency=4.7s
+DEBUG tools.browser_tool: cleanup_browser called for task_id: 20260519_225840_181d8d1f
+DEBUG tools.browser_tool: Active sessions: []
+DEBUG tools.browser_tool: No active session found for task_id: 20260519_225840_181d8d1f
+INFO agent.conversation_loop: Turn ended: reason=text_response(finish_reason=stop) model=qwen3.6-plus api_calls=2/60 budget=2/60 tool_turns=1 last_msg_role=assistant response_len=15 session=20260519_225840_181d8d1f
+INFO agent.auxiliary_client: Auxiliary auto-detect: using main provider custom (qwen3.6-plus)
+INFO agent.auxiliary_client: Auxiliary title_generation: using auto (qwen3.6-plus) at http://cccai.store/v1/
+INFO gateway.run: response ready: platform=feishu chat=oc_1e066e430c750df91edf064a6a3193bf time=13.2s api_calls=2 response=15 chars
+INFO gateway.platforms.base: [Feishu] Sending response (15 chars) to oc_1e066e430c750df91edf064a6a3193bf
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.platforms.feishu: [Feishu] Reaction removed on message om_x100b6ff3e715b8b8b3e5bb2ae57c563 (operator_type=app, emoji=Typing)
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+INFO gateway.platforms.feishu: [Feishu] Received raw message type=text message_id=om_x100b6ff3e5535ca4b14a9c808db28eb
+INFO gateway.platforms.feishu: [Feishu] Inbound dm message received: id=om_x100b6ff3e5535ca4b14a9c808db28eb type=text chat_id=oc_1e066e430c750df91edf064a6a3193bf sender=user:ou_efc291e8806c47b8460cc26a447cc476 text='ping pm' media=0
+INFO gateway.platforms.feishu: [Feishu] Flushing text batch agent:main:feishu:dm:oc_1e066e430c750df91edf064a6a3193bf (7 chars)
+INFO gateway.run: inbound message: platform=feishu user=ou_efc291e8806c47b8460cc26a447cc476 chat=oc_1e066e430c750df91edf064a6a3193bf msg='ping pm'
+DEBUG gateway.run: No session model override: session=agent:main:feishu:dm:oc_1e066e430c750df91edf064a6a3193bf config_model=qwen3.6-plus override_keys=[]
+DEBUG gateway.platforms.feishu: [Feishu] Reaction added on message om_x100b6ff3e5535ca4b14a9c808db28eb (operator_type=app, emoji=Typing)
+INFO agent.model_metadata: Could not detect context length for model 'qwen3.6-plus' at http://cccai.store/v1 — defaulting to 256,000 tokens (probe-down). Set model.context_length in config.yaml to override.
+DEBUG gateway.run: No session model override: session=agent:main:feishu:dm:oc_1e066e430c750df91edf064a6a3193bf config_model=qwen3.6-plus override_keys=[]
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: run_agent resolved: model=qwen3.6-plus provider=custom session=agent:main:feishu:dm:oc_1e066e430c750df91edf064a6a3193bf
+DEBUG gateway.run: Reusing cached agent for session agent:main:feishu:dm:oc_1e066e430c750df91edf064a6a3193bf
+INFO agent.conversation_loop: conversation turn: session=20260519_225840_181d8d1f model=qwen3.6-plus provider=custom platform=feishu history=4 msg='ping pm'
+INFO run_agent: OpenAI client created (chat_completion_stream_request, shared=False) thread=Thread-3 (_call):134189489833664 provider=custom base_url=http://cccai.store/v1 model=qwen3.6-plus
+INFO run_agent: OpenAI client closed (stream_request_complete, shared=False, tcp_force_closed=0) thread=Thread-3 (_call):134189489833664 provider=custom base_url=http://cccai.store/v1 model=qwen3.6-plus
+INFO agent.conversation_loop: API call #3: model=qwen3.6-plus provider=custom in=18129 out=148 total=18277 latency=3.9s
+DEBUG tools.browser_tool: cleanup_browser called for task_id: 20260519_225840_181d8d1f
+DEBUG tools.browser_tool: Active sessions: []
+DEBUG tools.browser_tool: No active session found for task_id: 20260519_225840_181d8d1f
+INFO agent.conversation_loop: Turn ended: reason=text_response(finish_reason=stop) model=qwen3.6-plus api_calls=1/60 budget=1/60 tool_turns=1 last_msg_role=assistant response_len=39 session=20260519_225840_181d8d1f
+INFO agent.auxiliary_client: Auxiliary title_generation: using auto (qwen3.6-plus) at http://cccai.store/v1/
+INFO gateway.run: response ready: platform=feishu chat=oc_1e066e430c750df91edf064a6a3193bf time=4.8s api_calls=1 response=39 chars
+INFO gateway.platforms.base: [Feishu] Sending response (39 chars) to oc_1e066e430c750df91edf064a6a3193bf
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.platforms.feishu: [Feishu] Reaction removed on message om_x100b6ff3e5535ca4b14a9c808db28eb (operator_type=app, emoji=Typing)
+DEBUG agent.title_generator: Auto-generated session title: Starting A New Conversation
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG agent.title_generator: Auto-generated session title: PM Agent Status Check
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+INFO gateway.platforms.feishu: [Feishu] Received raw message type=text message_id=om_x100b6ff3e08daca8b2fcea16ae040dd
+INFO gateway.platforms.feishu: [Feishu] Inbound dm message received: id=om_x100b6ff3e08daca8b2fcea16ae040dd type=text chat_id=oc_1e066e430c750df91edf064a6a3193bf sender=user:ou_efc291e8806c47b8460cc26a447cc476 text='你在线吗' media=0
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+INFO gateway.platforms.feishu: [Feishu] Flushing text batch agent:main:feishu:dm:oc_1e066e430c750df91edf064a6a3193bf (4 chars)
+INFO gateway.run: inbound message: platform=feishu user=ou_efc291e8806c47b8460cc26a447cc476 chat=oc_1e066e430c750df91edf064a6a3193bf msg='你在线吗'
+DEBUG gateway.run: No session model override: session=agent:main:feishu:dm:oc_1e066e430c750df91edf064a6a3193bf config_model=qwen3.6-plus override_keys=[]
+INFO agent.model_metadata: Could not detect context length for model 'qwen3.6-plus' at http://cccai.store/v1 — defaulting to 256,000 tokens (probe-down). Set model.context_length in config.yaml to override.
+DEBUG gateway.run: No session model override: session=agent:main:feishu:dm:oc_1e066e430c750df91edf064a6a3193bf config_model=qwen3.6-plus override_keys=[]
+DEBUG gateway.run: run_agent resolved: model=qwen3.6-plus provider=custom session=agent:main:feishu:dm:oc_1e066e430c750df91edf064a6a3193bf
+DEBUG gateway.run: Reusing cached agent for session agent:main:feishu:dm:oc_1e066e430c750df91edf064a6a3193bf
+INFO agent.conversation_loop: conversation turn: session=20260519_225840_181d8d1f model=qwen3.6-plus provider=custom platform=feishu history=6 msg='你在线吗'
+INFO run_agent: OpenAI client created (chat_completion_stream_request, shared=False) thread=Thread-4 (_call):134189489833664 provider=custom base_url=http://cccai.store/v1 model=qwen3.6-plus
+INFO run_agent: OpenAI client closed (stream_request_complete, shared=False, tcp_force_closed=0) thread=Thread-4 (_call):134189489833664 provider=custom base_url=http://cccai.store/v1 model=qwen3.6-plus
+INFO agent.conversation_loop: API call #4: model=qwen3.6-plus provider=custom in=18163 out=29 total=18192 latency=2.7s
+DEBUG tools.browser_tool: cleanup_browser called for task_id: 20260519_225840_181d8d1f
+DEBUG tools.browser_tool: Active sessions: []
+DEBUG tools.browser_tool: No active session found for task_id: 20260519_225840_181d8d1f
+INFO agent.conversation_loop: Turn ended: reason=text_response(finish_reason=stop) model=qwen3.6-plus api_calls=1/60 budget=1/60 tool_turns=1 last_msg_role=assistant response_len=9 session=20260519_225840_181d8d1f
+INFO gateway.run: response ready: platform=feishu chat=oc_1e066e430c750df91edf064a6a3193bf time=3.3s api_calls=1 response=9 chars
+INFO gateway.platforms.base: [Feishu] Sending response (9 chars) to oc_1e066e430c750df91edf064a6a3193bf
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.platforms.feishu: [Feishu] Reaction removed on message om_x100b6ff3e08daca8b2fcea16ae040dd (operator_type=app, emoji=Typing)
+DEBUG gateway.platforms.feishu: [Feishu] Reaction added on message om_x100b6ff3e08daca8b2fcea16ae040dd (operator_type=app, emoji=Typing)
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+INFO gateway.platforms.feishu: [Feishu] Received raw message type=text message_id=om_x100b6ff3fb83c8a0b29783263763b6a
+INFO gateway.platforms.feishu: [Feishu] Inbound dm message received: id=om_x100b6ff3fb83c8a0b29783263763b6a type=text chat_id=oc_1e066e430c750df91edf064a6a3193bf sender=user:ou_efc291e8806c47b8460cc26a447cc476 text='PM 调 DEV 做一个很小的任务' media=0
+INFO gateway.platforms.feishu: [Feishu] Flushing text batch agent:main:feishu:dm:oc_1e066e430c750df91edf064a6a3193bf (17 chars)
+INFO gateway.run: inbound message: platform=feishu user=ou_efc291e8806c47b8460cc26a447cc476 chat=oc_1e066e430c750df91edf064a6a3193bf msg='PM 调 DEV 做一个很小的任务'
+DEBUG gateway.run: No session model override: session=agent:main:feishu:dm:oc_1e066e430c750df91edf064a6a3193bf config_model=qwen3.6-plus override_keys=[]
+INFO agent.model_metadata: Could not detect context length for model 'qwen3.6-plus' at http://cccai.store/v1 — defaulting to 256,000 tokens (probe-down). Set model.context_length in config.yaml to override.
+DEBUG gateway.run: No session model override: session=agent:main:feishu:dm:oc_1e066e430c750df91edf064a6a3193bf config_model=qwen3.6-plus override_keys=[]
+DEBUG gateway.run: run_agent resolved: model=qwen3.6-plus provider=custom session=agent:main:feishu:dm:oc_1e066e430c750df91edf064a6a3193bf
+DEBUG gateway.run: Reusing cached agent for session agent:main:feishu:dm:oc_1e066e430c750df91edf064a6a3193bf
+INFO agent.conversation_loop: conversation turn: session=20260519_225840_181d8d1f model=qwen3.6-plus provider=custom platform=feishu history=8 msg='PM 调 DEV 做一个很小的任务'
+INFO run_agent: OpenAI client created (chat_completion_stream_request, shared=False) thread=Thread-5 (_call):134189489833664 provider=custom base_url=http://cccai.store/v1 model=qwen3.6-plus
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.platforms.feishu: [Feishu] Reaction added on message om_x100b6ff3fb83c8a0b29783263763b6a (operator_type=app, emoji=Typing)
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+INFO run_agent: OpenAI client closed (stream_request_complete, shared=False, tcp_force_closed=0) thread=Thread-5 (_call):134189489833664 provider=custom base_url=http://cccai.store/v1 model=qwen3.6-plus
+INFO agent.conversation_loop: API call #5: model=qwen3.6-plus provider=custom in=18189 out=105 total=18294 latency=15.2s
+INFO agent.tool_executor: tool skill_view completed (0.02s, 15381 chars)
+INFO run_agent: OpenAI client created (chat_completion_stream_request, shared=False) thread=Thread-6 (_call):134189489833664 provider=custom base_url=http://cccai.store/v1 model=qwen3.6-plus
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+INFO run_agent: OpenAI client closed (stream_request_complete, shared=False, tcp_force_closed=0) thread=Thread-6 (_call):134189489833664 provider=custom base_url=http://cccai.store/v1 model=qwen3.6-plus
+INFO agent.conversation_loop: API call #6: model=qwen3.6-plus provider=custom in=21945 out=110 total=22055 latency=11.2s
+INFO tools.terminal_tool: Creating new local environment for task default...
+INFO tools.environments.base: Session snapshot created (session=f164c06dbd6c, cwd=/home/ubuntu)
+INFO tools.terminal_tool: local environment ready for task default
+INFO agent.tool_executor: tool terminal completed (0.74s, 308 chars)
+INFO run_agent: OpenAI client created (chat_completion_stream_request, shared=False) thread=Thread-10 (_call):134189512910528 provider=custom base_url=http://cccai.store/v1 model=qwen3.6-plus
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+INFO run_agent: OpenAI client closed (stream_request_complete, shared=False, tcp_force_closed=0) thread=Thread-10 (_call):134189512910528 provider=custom base_url=http://cccai.store/v1 model=qwen3.6-plus
+INFO agent.conversation_loop: API call #7: model=qwen3.6-plus provider=custom in=22142 out=312 total=22454 latency=8.1s
+INFO run_agent: OpenAI client created (agent_init, shared=True) thread=asyncio_3:134189498226368 provider=custom base_url=http://cccai.store/v1 model=qwen3.6-plus
+INFO agent.model_metadata: Could not detect context length for model 'qwen3.6-plus' at http://cccai.store/v1 — defaulting to 256,000 tokens (probe-down). Set model.context_length in config.yaml to override.
+INFO agent.auxiliary_client: Auxiliary auto-detect: using main provider custom (qwen3.6-plus)
+INFO agent.model_metadata: Could not detect context length for model 'qwen3.6-plus' at http://cccai.store/v1/ — defaulting to 256,000 tokens (probe-down). Set model.context_length in config.yaml to override.
+INFO agent.conversation_loop: conversation turn: session=20260519_230218_0d1789 model=qwen3.6-plus provider=custom platform=feishu history=0 msg='在 /home/ubuntu/phase2-hermes-smoke/ 目录下创建一个 hello-from-dev.txt 文件，内容为 "Hello fro...'
+INFO run_agent: OpenAI client created (chat_completion_stream_request, shared=False) thread=Thread-12 (_call):134189265446592 provider=custom base_url=http://cccai.store/v1 model=qwen3.6-plus
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+INFO gateway.platforms.feishu: [Feishu] Received raw message type=text message_id=om_x100b6ff3f973cca0b34246213f5e1c1
+INFO gateway.platforms.feishu: [Feishu] Inbound dm message received: id=om_x100b6ff3f973cca0b34246213f5e1c1 type=text chat_id=oc_1e066e430c750df91edf064a6a3193bf sender=user:ou_efc291e8806c47b8460cc26a447cc476 text='请让 DEV 在 /home/ubuntu/cccagents/workspaces/phase35-feishu-smoke/repo 创建 hello-from-feishu-dev.txt，内容是 1213hello\nfrom Fei' media=0
+INFO gateway.platforms.feishu: [Feishu] Flushing text batch agent:main:feishu:dm:oc_1e066e430c750df91edf064a6a3193bf (141 chars)
+INFO run_agent: OpenAI client closed (stream_request_complete, shared=False, tcp_force_closed=0) thread=Thread-12 (_call):134189265446592 provider=custom base_url=http://cccai.store/v1 model=qwen3.6-plus
+INFO run_agent: OpenAI client closed (stream_interrupt_abort, shared=False, tcp_force_closed=0) thread=ThreadPoolExecutor-0_0:134189273839296 provider=custom base_url=http://cccai.store/v1 model=qwen3.6-plus
+DEBUG tools.browser_tool: cleanup_browser called for task_id: sa-0-2d386cd0
+DEBUG tools.browser_tool: Active sessions: []
+DEBUG tools.browser_tool: No active session found for task_id: sa-0-2d386cd0
+INFO agent.conversation_loop: Turn ended: reason=interrupted_during_api_call model=qwen3.6-plus api_calls=1/50 budget=1/50 tool_turns=0 last_msg_role=user response_len=65 session=20260519_230218_0d1789
+DEBUG tools.browser_tool: cleanup_browser called for task_id: 20260519_230218_0d1789
+DEBUG tools.browser_tool: Active sessions: []
+DEBUG tools.browser_tool: No active session found for task_id: 20260519_230218_0d1789
+INFO run_agent: OpenAI client closed (agent_close, shared=True, tcp_force_closed=0) thread=asyncio_3:134189498226368 provider=custom base_url=http://cccai.store/v1 model=qwen3.6-plus
+INFO agent.tool_executor: tool delegate_task completed (3.38s, 321 chars)
+DEBUG tools.browser_tool: cleanup_browser called for task_id: 20260519_225840_181d8d1f
+DEBUG tools.browser_tool: Active sessions: []
+DEBUG tools.browser_tool: No active session found for task_id: 20260519_225840_181d8d1f
+INFO agent.conversation_loop: Turn ended: reason=interrupted_by_user model=qwen3.6-plus api_calls=3/60 budget=3/60 tool_turns=4 last_msg_role=tool response_len=0 session=20260519_225840_181d8d1f
+DEBUG gateway.run: Processing queued message after agent completion: '请让 DEV 在 /home/ubuntu/cccagents/workspac...'
+DEBUG gateway.run: Processing pending message: '请让 DEV 在 /home/ubuntu/cccagents/workspac...'
+DEBUG gateway.run: No session model override: session=agent:main:feishu:dm:oc_1e066e430c750df91edf064a6a3193bf config_model=qwen3.6-plus override_keys=[]
+DEBUG gateway.run: run_agent resolved: model=qwen3.6-plus provider=custom session=agent:main:feishu:dm:oc_1e066e430c750df91edf064a6a3193bf
+DEBUG gateway.run: Reusing cached agent for session agent:main:feishu:dm:oc_1e066e430c750df91edf064a6a3193bf
+INFO agent.conversation_loop: conversation turn: session=20260519_225840_181d8d1f model=qwen3.6-plus provider=custom platform=feishu history=15 msg='[System note: Your previous turn was interrupted before you could process the la...'
+INFO run_agent: OpenAI client created (chat_completion_stream_request, shared=False) thread=Thread-13 (_call):134189512910528 provider=custom base_url=http://cccai.store/v1 model=qwen3.6-plus
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+INFO run_agent: OpenAI client closed (stream_request_complete, shared=False, tcp_force_closed=0) thread=Thread-13 (_call):134189512910528 provider=custom base_url=http://cccai.store/v1 model=qwen3.6-plus
+INFO agent.conversation_loop: API call #8: model=qwen3.6-plus provider=custom in=22452 out=241 total=22693 latency=11.7s
+INFO run_agent: OpenAI client created (agent_init, shared=True) thread=asyncio_1:134189819438784 provider=custom base_url=http://cccai.store/v1 model=qwen3.6-plus
+INFO agent.model_metadata: Could not detect context length for model 'qwen3.6-plus' at http://cccai.store/v1 — defaulting to 256,000 tokens (probe-down). Set model.context_length in config.yaml to override.
+INFO agent.auxiliary_client: Auxiliary auto-detect: using main provider custom (qwen3.6-plus)
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+INFO agent.model_metadata: Could not detect context length for model 'qwen3.6-plus' at http://cccai.store/v1/ — defaulting to 256,000 tokens (probe-down). Set model.context_length in config.yaml to override.
+INFO agent.conversation_loop: conversation turn: session=20260519_230233_602b04 model=qwen3.6-plus provider=custom platform=feishu history=0 msg='在 /home/ubuntu/cccagents/workspaces/phase35-feishu-smoke/repo/ 目录下创建 hello-from-...'
+INFO run_agent: OpenAI client created (chat_completion_stream_request, shared=False) thread=Thread-15 (_call):134189265446592 provider=custom base_url=http://cccai.store/v1 model=qwen3.6-plus
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+INFO run_agent: OpenAI client closed (stream_request_complete, shared=False, tcp_force_closed=0) thread=Thread-15 (_call):134189265446592 provider=custom base_url=http://cccai.store/v1 model=qwen3.6-plus
+INFO agent.conversation_loop: API call #1: model=qwen3.6-plus provider=custom in=3723 out=84 total=3807 latency=7.7s
+INFO agent.tool_executor: tool terminal completed (0.25s, 45 chars)
+INFO run_agent: OpenAI client created (chat_completion_stream_request, shared=False) thread=Thread-17 (_call):134189265446592 provider=custom base_url=http://cccai.store/v1 model=qwen3.6-plus
+INFO run_agent: OpenAI client closed (stream_request_complete, shared=False, tcp_force_closed=0) thread=Thread-17 (_call):134189265446592 provider=custom base_url=http://cccai.store/v1 model=qwen3.6-plus
+INFO agent.conversation_loop: API call #2: model=qwen3.6-plus provider=custom in=3837 out=91 total=3928 latency=3.2s
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+INFO agent.tool_executor: tool write_file completed (0.64s, 113 chars)
+INFO run_agent: OpenAI client created (chat_completion_stream_request, shared=False) thread=Thread-22 (_call):134189257053888 provider=custom base_url=http://cccai.store/v1 model=qwen3.6-plus
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+INFO run_agent: OpenAI client closed (stream_request_complete, shared=False, tcp_force_closed=0) thread=Thread-22 (_call):134189257053888 provider=custom base_url=http://cccai.store/v1 model=qwen3.6-plus
+INFO agent.conversation_loop: API call #3: model=qwen3.6-plus provider=custom in=3978 out=66 total=4044 latency=8.8s
+INFO agent.tool_executor: tool terminal completed (0.25s, 77 chars)
+INFO run_agent: OpenAI client created (chat_completion_stream_request, shared=False) thread=Thread-24 (_call):134189257053888 provider=custom base_url=http://cccai.store/v1 model=qwen3.6-plus
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+INFO run_agent: OpenAI client closed (stream_request_complete, shared=False, tcp_force_closed=0) thread=Thread-24 (_call):134189257053888 provider=custom base_url=http://cccai.store/v1 model=qwen3.6-plus
+INFO agent.conversation_loop: API call #4: model=qwen3.6-plus provider=custom in=4088 out=103 total=4191 latency=8.0s
+DEBUG tools.browser_tool: cleanup_browser called for task_id: sa-0-76986a28
+DEBUG tools.browser_tool: Active sessions: []
+DEBUG tools.browser_tool: No active session found for task_id: sa-0-76986a28
+DEBUG hermes_state: WAL checkpoint: 420/420 pages checkpointed
+INFO agent.conversation_loop: Turn ended: reason=text_response(finish_reason=stop) model=qwen3.6-plus api_calls=4/50 budget=4/50 tool_turns=3 last_msg_role=assistant response_len=208 session=20260519_230233_602b04
+DEBUG tools.browser_tool: cleanup_browser called for task_id: 20260519_230233_602b04
+DEBUG tools.browser_tool: Active sessions: []
+DEBUG tools.browser_tool: No active session found for task_id: 20260519_230233_602b04
+INFO run_agent: OpenAI client closed (agent_close, shared=True, tcp_force_closed=0) thread=asyncio_1:134189819438784 provider=custom base_url=http://cccai.store/v1 model=qwen3.6-plus
+INFO agent.tool_executor: tool delegate_task completed (32.68s, 708 chars)
+INFO run_agent: OpenAI client created (chat_completion_stream_request, shared=False) thread=Thread-25 (_call):134189273839296 provider=custom base_url=http://cccai.store/v1 model=qwen3.6-plus
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+INFO run_agent: OpenAI client closed (stream_request_complete, shared=False, tcp_force_closed=0) thread=Thread-25 (_call):134189273839296 provider=custom base_url=http://cccai.store/v1 model=qwen3.6-plus
+INFO agent.conversation_loop: API call #9: model=qwen3.6-plus provider=custom in=22983 out=93 total=23076 latency=4.0s
+DEBUG tools.browser_tool: cleanup_browser called for task_id: 20260519_225840_181d8d1f
+DEBUG tools.browser_tool: Active sessions: []
+DEBUG tools.browser_tool: No active session found for task_id: 20260519_225840_181d8d1f
+INFO agent.conversation_loop: Turn ended: reason=text_response(finish_reason=stop) model=qwen3.6-plus api_calls=2/60 budget=2/60 tool_turns=5 last_msg_role=assistant response_len=192 session=20260519_225840_181d8d1f
+INFO gateway.run: response ready: platform=feishu chat=oc_1e066e430c750df91edf064a6a3193bf time=87.4s api_calls=2 response=192 chars
+INFO gateway.platforms.base: [Feishu] Sending response (192 chars) to oc_1e066e430c750df91edf064a6a3193bf
+DEBUG gateway.platforms.feishu: [Feishu] Reaction removed on message om_x100b6ff3fb83c8a0b29783263763b6a (operator_type=app, emoji=Typing)
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+INFO gateway.memory_monitor: [MEMORY] rss=272MB gc=(0, 6, 9) threads=10 uptime=300s
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+INFO tools.terminal_tool: Cleaned up inactive environment for task: default
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+INFO gateway.memory_monitor: [MEMORY] rss=273MB gc=(107, 6, 9) threads=10 uptime=600s
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no subscriptions
+DEBUG gateway.run: kanban notifier: board default has no su

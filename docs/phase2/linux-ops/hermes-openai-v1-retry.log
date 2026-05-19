@@ -1,0 +1,8 @@
+2026-05-19T13:19:35Z
+Trying base_url with /v1 suffix per user instruction
+✓ Set model.provider = custom in /home/ubuntu/.hermes/config.yaml
+✓ Set model.base_url = http://cccai.store/v1 in /home/ubuntu/.hermes/config.yaml
+✓ Set model.default = qwen3.6-plus in /home/ubuntu/.hermes/config.yaml
+
+session_id: 20260519_211938_54a11b
+OK

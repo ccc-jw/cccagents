@@ -1,5 +1,7 @@
 # cccagents Phase 2 Workflow Implementation Plan
 
+> Paused on 2026-05-19: 本计划 Task 8-10 不再继续执行，直到确认这些本地 Python 组件作为 Hermes 适配层仍然需要。新的 Phase 2 执行计划见 `docs/superpowers/plans/2026-05-19-cccagents-phase2-hermes-integration-plan.md`。
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Build a local Phase 2 workflow prototype that can represent Hermes multi-agent roles, project tasks, artifacts, review gates, workflow transitions, and Claude Code CLI executor requests without Feishu or long-running workers.
