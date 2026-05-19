@@ -33,3 +33,12 @@ def test_assert_within_project_rejects_other_project(tmp_path):
 
     with pytest.raises(ValueError, match="outside project scope"):
         assert_within_project(target, paths)
+
+
+def test_run_log_dir_is_inside_project_logs(tmp_path):
+    paths = ProjectPaths(root=tmp_path, project_id="demo")
+
+    run_log_dir = paths.run_log_dir("run_123")
+
+    assert run_log_dir == tmp_path / "projects" / "demo" / "08-logs" / "hermes-runs" / "run_123"
+    assert_within_project(run_log_dir, paths) == run_log_dir.resolve()

@@ -19,6 +19,9 @@ class ProjectPaths:
     def command_log(self) -> Path:
         return self.project_root / "08-logs" / "command-log.jsonl"
 
+    def run_log_dir(self, run_id: str) -> Path:
+        return self.project_root / "08-logs" / "hermes-runs" / run_id
+
 
 def assert_within_project(path: Path, project_paths: ProjectPaths) -> Path:
     resolved = path.resolve()
