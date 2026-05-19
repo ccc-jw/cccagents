@@ -10,7 +10,7 @@ mkdir -p "$(dirname "$REPORT_PATH")"
   echo "## System"
   echo
   echo '```text'
-  date -Is
+  date -u +%Y-%m-%dT%H:%M:%SZ
   uname -a
   echo '```'
   echo
