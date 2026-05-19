@@ -22,4 +22,4 @@ Date: 2026-05-20
 
 ## Decision
 
-Pending Phase 4 implementation and Linux smoke verification.
+Phase 4 acceptance passed. Durable services, Feishu allowlist hardening, restart recovery, multi-project scheduling, PM notifications, approval safety, secret safety, local tests, Linux tests, and Linux evidence are all verified.
