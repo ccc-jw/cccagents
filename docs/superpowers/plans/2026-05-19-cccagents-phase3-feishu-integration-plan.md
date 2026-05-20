@@ -420,7 +420,7 @@ Expected: log file exists and contains Hermes Gateway help or platform informati
 Run from Mac worktree:
 
 ```bash
-rsync -av -e "sshpass -p 'ccc123123!' ssh -p 22222 -o StrictHostKeyChecking=no" ubuntu@124.156.192.85:/home/ubuntu/cccagents-source/docs/phase3/linux-ops/feishu-gateway-capability.log docs/phase3/linux-ops/
+rsync -av -e "sshpass -p '[REDACTED_PASSWORD]' ssh -p 22222 -o StrictHostKeyChecking=no" ubuntu@[REDACTED_SERVER_IP]:/home/ubuntu/cccagents-source/docs/phase3/linux-ops/feishu-gateway-capability.log docs/phase3/linux-ops/
 ```
 
 Expected: local `docs/phase3/linux-ops/feishu-gateway-capability.log` exists.

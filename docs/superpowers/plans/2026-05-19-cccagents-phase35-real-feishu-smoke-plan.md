@@ -165,7 +165,7 @@ The `1213` prefix was part of the Feishu message content and does not affect the
 Run:
 
 ```bash
-rsync -av -e "sshpass -p 'ccc123123!' ssh -p 22222 -o StrictHostKeyChecking=no" ubuntu@124.156.192.85:/home/ubuntu/cccagents-source/docs/phase3/linux-ops/ docs/phase3/linux-ops/
+rsync -av -e "sshpass -p '[REDACTED_PASSWORD]' ssh -p 22222 -o StrictHostKeyChecking=no" ubuntu@[REDACTED_SERVER_IP]:/home/ubuntu/cccagents-source/docs/phase3/linux-ops/ docs/phase3/linux-ops/
 ```
 
 Expected: local Phase 3.5 log files exist.
