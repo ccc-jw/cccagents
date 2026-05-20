@@ -226,11 +226,14 @@ cccagents-pm-scheduler.service
 关键内容应包括：
 
 ```text
+WorkingDirectory=/home/ubuntu/cccagents-source
 ExecStart=/home/ubuntu/.local/bin/hermes gateway run --accept-hooks --replace
 Environment=PYTHONPATH=/home/ubuntu/cccagents-source/src
 ExecStart=/home/ubuntu/cccagents-source/.venv/bin/python -m cccagents.pm_scheduler
 Restart=always
 ```
+
+Gateway 的 `WorkingDirectory` 必须是仓库根目录，因为 Hermes 会自动注入该目录下的 `AGENTS.md`。该文件把 Feishu 用户入口绑定到 PM Agent，并引用 `hermes/roles/*.md` 作为角色定义来源。
 
 安装并启动：
 

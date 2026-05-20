@@ -24,3 +24,14 @@ def test_hermes_role_files_define_required_contracts():
         assert "## Tool Access" in content
         for term in required_terms:
             assert term in content
+
+
+def test_gateway_agents_file_binds_feishu_to_pm_boundary():
+    content = Path("AGENTS.md").read_text(encoding="utf-8")
+
+    assert "PM Agent" in content
+    assert "Feishu users only talk to PM" in content
+    assert "PM is the only user-facing entry point" in content
+    assert "Do not let PDM, RES, ARCH, DEV, TEST, or SEC directly contact the Feishu user" in content
+    assert "hermes/roles/pm.md" in content
+    assert "hermes/roles/dev.md" in content

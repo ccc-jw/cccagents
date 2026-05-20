@@ -340,10 +340,11 @@ OK
 Gateway unit 必须包含：
 
 ```text
+WorkingDirectory=/home/ubuntu/cccagents-source
 ExecStart=/home/ubuntu/.local/bin/hermes gateway run --accept-hooks --replace
 ```
 
-`--replace` 是必要的，因为旧 foreground gateway 或残留 PID 可能导致服务启动失败。
+`--replace` 是必要的，因为旧 foreground gateway 或残留 PID 可能导致服务启动失败。`WorkingDirectory` 必须指向仓库根目录，因为 Hermes 会自动注入该目录下的 `AGENTS.md`，从而把 Feishu 用户入口绑定到 PM Agent，并引用 `hermes/roles/*.md` 作为角色定义来源。
 
 Scheduler unit 必须包含：
 
