@@ -21,7 +21,7 @@
 RUN_USER=ubuntu
 PROJECT_SOURCE=/home/ubuntu/cccagents-source
 PROJECT_ROOT=/home/ubuntu/cccagents
-HERMES_ENV=/home/ubuntu/.hermes/.env
+HERMES_ENV=/home/ubuntu/.env
 HERMES_CONFIG=/home/ubuntu/.hermes/config.yaml
 ```
 
@@ -210,7 +210,7 @@ Feishu smoke 顺序：
 cd /home/ubuntu/cccagents-source
 PROJECT_SOURCE=/home/ubuntu/cccagents-source \
 PROJECT_ROOT=/home/ubuntu/cccagents \
-HERMES_ENV=/home/ubuntu/.hermes/.env \
+HERMES_ENV=/home/ubuntu/.env \
 RUN_USER=ubuntu \
 UNIT_DIR=/tmp/cccagents-systemd-units \
 ./scripts/phase4/install_phase4_services.sh

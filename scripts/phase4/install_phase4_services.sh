@@ -3,7 +3,7 @@ set -euo pipefail
 
 PROJECT_SOURCE="${PROJECT_SOURCE:-/home/ubuntu/cccagents-source}"
 PROJECT_ROOT="${PROJECT_ROOT:-/home/ubuntu/cccagents/projects}"
-HERMES_ENV="${HERMES_ENV:-/home/ubuntu/.hermes/.env}"
+HERMES_ENV="${HERMES_ENV:-/home/ubuntu/.env}"
 RUN_USER="${RUN_USER:-ubuntu}"
 UNIT_DIR="${UNIT_DIR:-/tmp/cccagents-systemd-units}"
 
