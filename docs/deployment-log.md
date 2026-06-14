@@ -274,8 +274,16 @@ sudo systemctl restart cccagents-pm-scheduler
 
 ---
 
-## 备注
+### 14. PM Routing Stage A - systemd unit 验证 ✅
 
-- 当前 Gateway 走的是 Hermes 默认 Agent，还没有加载 cccagents 的 PM 角色路由（AGENTS.md）
-- 消息直接由 qwen3.7-plus 处理，没有经过 PM → DEV/TEST 等角色分发
-- 如需 PM 角色协作功能，后续需要配置 AGENTS.md 加载
+检查时间：2026-06-14
+
+Gateway unit 关键配置：
+
+```text
+WorkingDirectory=/home/ubuntu/cccagents-source
+EnvironmentFile=/home/ubuntu/.env
+ExecStart=/home/ubuntu/.local/bin/hermes gateway run --accept-hooks --replace
+```
+
+结果：`WorkingDirectory` 已指向仓库根目录，Hermes Gateway 可以读取 `/home/ubuntu/cccagents-source/AGENTS.md`。
