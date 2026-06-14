@@ -85,7 +85,7 @@ pipx install hermes-agent
 ```
 ANTHROPIC_BASE_URL=https://cccai.store
 ANTHROPIC_API_KEY=***
-ANTHROPIC_MODEL=gpt-5.5
+ANTHROPIC_MODEL=qwen3.7-plus
 OPENAI_API_KEY=***
 OPENAI_BASE_URL=https://cccai.store/v1
 ```
@@ -108,12 +108,12 @@ custom_providers:
       name: gpt-5.5
     qwen3.7-plus:
       name: qwen3.7-plus
-  model: gpt-5.5
+  model: qwen3.7-plus
 
 model:
   provider: ccc
   base_url: https://cccai.store/v1
-  default: gpt-5.5
+  default: qwen3.7-plus
 
 gateway:
   terminal: true
@@ -123,7 +123,7 @@ gateway:
 ### 8. Hermes 模型验证 ✅
 
 ```bash
-hermes chat --query "reply OK only" --provider ccc --model gpt-5.5 --quiet
+hermes chat --query "reply OK only" --provider ccc --model qwen3.7-plus --quiet
 ```
 
 输出：`OK`
@@ -149,51 +149,6 @@ sudo systemctl enable --now cccagents-pm-scheduler
 - cccagents-hermes-gateway: enabled / active
 - cccagents-pm-scheduler: enabled / active
 
----
-
-## 遇到的问题及解决
-
-| 问题 | 原因 | 解决方案 |
-| --- | --- | --- |
-| GitHub 连不上 | 服务器网络限制，github.com:443 超时 | 本地打包 scp 上传 |
-| Hermes 安装脚本失败 | 同上，raw.githubusercontent.com 也超时 | 改用 `pipx install hermes-agent` |
-| cccai.store HTTP 301 | nginx 强制 HTTPS | 改用 `https://cccai.store/v1` |
-| Hermes 401 Invalid token | `api_key_env` 环境变量方式不生效 | 在 config.yaml 的 `custom_providers` 里内联 `api_key` |
-| 2 个测试失败 | test_complexity_classifier 和 test_orchestrator_s0_s1 模块未实现 | 不影响部署，后续实现 |
-
----
-
-## 最终状态
-
-| 组件 | 版本 | 状态 |
-| --- | --- | --- |
-| Python | 3.12.3 | ✅ |
-| Node.js | v24.16.0 | ✅ |
-| Claude Code CLI | 2.1.177 | ✅ |
-| Hermes Agent | 0.16.0 | ✅ |
-| cccagents-hermes-gateway | - | enabled / active |
-| cccagents-pm-scheduler | - | enabled / active |
-
----
-
-## 运维命令
-
-```bash
-# 查看服务状态
-systemctl status cccagents-hermes-gateway --no-pager
-systemctl status cccagents-pm-scheduler --no-pager
-
-# 查看日志
-journalctl -u cccagents-hermes-gateway -n 100 --no-pager
-journalctl -u cccagents-pm-scheduler -n 100 --no-pager
-
-# 重启服务
-sudo systemctl restart cccagents-hermes-gateway
-sudo systemctl restart cccagents-pm-scheduler
-```
-
----
-
 ### 10. 配置 Feishu Bot ✅
 
 写入 `/home/ubuntu/.env` 和 `/home/ubuntu/.hermes/.env`：
@@ -210,6 +165,12 @@ FEISHU_CONNECTION_MODE=websocket
 - 权限：`im:message`、`im:message:send_as_bot`、`im:chat`
 - 版本发布：已创建并发布
 
+验证：
+- websocket 连接成功：`connected to wss://msg-frontier.feishu.cn/ws/v2`
+- 消息收到：`你好` → 回复 16 chars，10.8s
+- 消息收到：`你是谁` → 回复 123 chars，3.5s
+- 消息收到：`ping pm` → 回复成功
+
 ### 11. 收紧 Allowlist ✅
 
 ```
@@ -218,9 +179,49 @@ FEISHU_ALLOWED_USERS=ou_efc291e8806c47b8460cc26a447cc476
 ```
 
 验证：
-- 消息收到：`你好`
-- 用户验证通过：`ou_efc291e8806c47b8460cc26a447cc476`
-- 回复成功：16 chars，6.8s
+- `Channel directory built: 1 target(s)` — 识别到允许的用户
+- 消息收到：`你好` → 回复成功，6.8s
+
+### 12. 模型切换 gpt-5.5 → qwen3.7-plus ✅
+
+修改 `.env` 和 `config.yaml`，重启 Gateway。
+
+验证：
+- 日志确认：`model=qwen3.7-plus provider=custom`
+- 旧 session 已清除（避免历史上下文干扰）
+- 消息收到：`你是什么模型` → 回复 104 chars，4.3s
+
+### 13. Phase 4 Smoke 验证 ✅
+
+#### 13.1 重启恢复 smoke
+
+```
+task_id='task_restart_1', previous_status='running', next_status='interrupted',
+action='mark_interrupted', notify_pm=True
+```
+
+结果：stale running task 正确恢复为 interrupted ✅
+
+#### 13.2 多项目调度 smoke
+
+```
+project_a_first_write          → dispatch_allowed        ✅
+project_a_second_write_blocked → same_project_write_lock  ✅
+project_b_write_allowed        → dispatch_allowed         ✅
+project_a_outside_cwd_blocked  → cwd_outside_project      ✅
+```
+
+结果：4 个场景全部符合预期 ✅
+
+#### 13.3 PM 通知 smoke
+
+覆盖 4 种通知类型：
+- `progress_summary` ✅
+- `restart_recovery` ✅
+- `approval_request` ✅
+- `completion_notice` ✅
+
+密钥脱敏验证：`ANTHROPIC_API_KEY=secret-value` → `ANTHROPIC_API_KEY=[REDACTED]` ✅
 
 ---
 
@@ -232,22 +233,24 @@ FEISHU_ALLOWED_USERS=ou_efc291e8806c47b8460cc26a447cc476
 | Hermes 安装脚本失败 | 同上，raw.githubusercontent.com 也超时 | 改用 `pipx install hermes-agent` |
 | cccai.store HTTP 301 | nginx 强制 HTTPS | 改用 `https://cccai.store/v1` |
 | Hermes 401 Invalid token | `api_key_env` 环境变量方式不生效 | 在 config.yaml 的 `custom_providers` 里内联 `api_key` |
-| 2 个测试失败 | test_complexity_classifier 和 test_orchestrator_s0_s1 模块未实现 | 不影响部署，后续实现 |
+| Bot 说自己是 gpt-5.5 | 旧 session 历史上下文残留 | 删除旧 session，新 session 正确识别为 qwen3.7-plus |
 
 ---
 
 ## 最终状态
 
-| 组件 | 版本 | 状态 |
+| 组件 | 版本/值 | 状态 |
 | --- | --- | --- |
 | Python | 3.12.3 | ✅ |
 | Node.js | v24.16.0 | ✅ |
 | Claude Code CLI | 2.1.177 | ✅ |
 | Hermes Agent | 0.16.0 | ✅ |
+| 当前模型 | qwen3.7-plus | ✅ |
 | cccagents-hermes-gateway | - | enabled / active |
 | cccagents-pm-scheduler | - | enabled / active |
-| Feishu Bot | - | websocket 连接正常 |
-| Allowlist | - | 只允许 `ou_efc291e8806c47b8460cc26a447cc476` |
+| Feishu Bot | websocket | 连接正常 |
+| Allowlist | `ou_efc291e8806c47b8460cc26a447cc476` | 已收紧 |
+| Phase 4 Smoke | 重启恢复 / 多项目调度 / PM 通知 | 全部通过 |
 
 ---
 
@@ -274,5 +277,5 @@ sudo systemctl restart cccagents-pm-scheduler
 ## 备注
 
 - 当前 Gateway 走的是 Hermes 默认 Agent，还没有加载 cccagents 的 PM 角色路由（AGENTS.md）
-- 消息直接由 gpt-5.5 处理，没有经过 PM → DEV/TEST 等角色分发
+- 消息直接由 qwen3.7-plus 处理，没有经过 PM → DEV/TEST 等角色分发
 - 如需 PM 角色协作功能，后续需要配置 AGENTS.md 加载
