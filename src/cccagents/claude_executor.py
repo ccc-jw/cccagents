@@ -122,6 +122,8 @@ def _build_prompt_content(request: ClaudeRunRequest, now: str) -> str:
 
 
 def _build_command(request: ClaudeRunRequest, prompt_content: str) -> list[str]:
+    if not prompt_content:
+        raise ValueError("prompt is required")
     return [
         "claude",
         "-p",

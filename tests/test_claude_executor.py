@@ -1,18 +1,24 @@
 import pytest
 
-from cccagents.claude_executor import build_claude_command
-from cccagents.phase2_models import AgentModelConfig
+from cccagents.claude_executor import ClaudeRunRequest, _build_command
+from pathlib import Path
 
 
-def test_build_claude_command_uses_prompt_model_and_text_output():
-    config = AgentModelConfig(
-        role_code="DEV",
-        model_base_url="http://cccai.store",
-        model_api_key_ref="secret://models/dev",
-        model_name="gpt-5.5",
+def test_build_command_uses_prompt_model_and_text_output():
+    request = ClaudeRunRequest(
+        task_id="task-1",
+        role="DEV",
+        prompt="只回复 OK",
+        workspace_path=Path("/tmp/workspace"),
+        project_dir=Path("/tmp/project"),
+        allowed_tools=["Read", "Write"],
+        model="gpt-5.5",
+        base_url="http://cccai.store",
+        api_key="secret://test-key",
+        run_id="run-001",
     )
 
-    command = build_claude_command(config, "只回复 OK")
+    command = _build_command(request, "只回复 OK")
 
     assert command == [
         "claude",
@@ -25,13 +31,19 @@ def test_build_claude_command_uses_prompt_model_and_text_output():
     ]
 
 
-def test_build_claude_command_rejects_empty_prompt():
-    config = AgentModelConfig(
-        role_code="DEV",
-        model_base_url="http://cccai.store",
-        model_api_key_ref="secret://models/dev",
-        model_name="gpt-5.5",
+def test_build_command_rejects_empty_prompt():
+    request = ClaudeRunRequest(
+        task_id="task-1",
+        role="DEV",
+        prompt="",
+        workspace_path=Path("/tmp/workspace"),
+        project_dir=Path("/tmp/project"),
+        allowed_tools=["Read"],
+        model="gpt-5.5",
+        base_url="http://cccai.store",
+        api_key="secret://test-key",
+        run_id="run-001",
     )
 
     with pytest.raises(ValueError, match="prompt is required"):
-        build_claude_command(config, "")
+        _build_command(request, "")
