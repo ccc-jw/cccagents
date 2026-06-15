@@ -328,3 +328,31 @@ PASS: allowlist configured
 
 阶段 A 已完成 PM 身份与安全边界注入。当前尚未实现完整 PM → PDM/ARCH/DEV/TEST/SEC 自动编排；后续进入 Stage B 再设计复杂度分类、任务状态、角色执行和 PM 汇总通知。
 
+---
+
+### 16. Stage B v1 本地编排内核 ✅
+
+实施时间：2026-06-14
+
+**完成内容：**
+
+1. `complexity_classifier.py` 支持 S0/S1/S2/S3 关键词分类。
+2. `project_state.py` 支持 `project-state.json` 读写。
+3. `task_store.py` 支持 list/status/claim/complete/fail。
+4. `orchestrator.py` 支持 S0/S1 本地编排。
+5. `FakeExecutor` 生成 DEV、TEST、PM 验收产物。
+
+**验证：**
+
+```text
+PYTHONPATH=src pytest -q tests/test_complexity_classifier.py tests/test_orchestrator_s0_s1.py tests/test_task_store.py tests/test_project_state.py
+```
+
+结果：11 passed。
+
+全量测试：87 passed。
+
+**当前边界：**
+
+Stage B v1 不接 Feishu 自动触发，不执行真实多 Agent，不执行部署/重启/commit/push。后续 Stage B v2 再设计 Feishu 触发 S0/S1 编排。
+
