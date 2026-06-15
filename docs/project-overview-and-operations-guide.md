@@ -52,13 +52,13 @@ docs/final-new-server-deployment-guide.md
 
 - 必须直接支持 OpenAI-compatible 网关。
 - 不接受协议适配层。
-- 默认模型：`qwen3.6-plus`。
+- 默认模型：`gpt-5.5`。
 - 默认使用窄授权，不使用 `--dangerously-skip-permissions`。
 
 示例：
 
 ```bash
-claude -p "$PROMPT" --model qwen3.6-plus --output-format text --allowedTools Read,Write
+claude -p "$PROMPT" --model gpt-5.5 --output-format text --allowedTools Read,Write
 ```
 
 ### 3.2 Hermes Agent
@@ -326,7 +326,7 @@ http://cccai.store
 验证命令：
 
 ```bash
-hermes chat --query "只回复 OK" --provider custom --model qwen3.6-plus --toolsets safe --quiet --max-turns 3
+hermes chat --query "只回复 OK" --provider custom --model gpt-5.5 --toolsets safe --quiet --max-turns 3
 ```
 
 期望：

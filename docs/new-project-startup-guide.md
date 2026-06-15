@@ -158,7 +158,7 @@ Hermes/Claude Code run evidence：
 DEV 执行任务建议使用窄授权：
 
 ```bash
-claude -p "$PROMPT" --model qwen3.6-plus --output-format text --allowedTools Read,Write
+claude -p "$PROMPT" --model gpt-5.5 --output-format text --allowedTools Read,Write
 ```
 
 ## 8. 飞书交互边界

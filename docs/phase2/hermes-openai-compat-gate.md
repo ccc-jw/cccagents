@@ -11,7 +11,7 @@ Hermes itself can use the user OpenAI-compatible model endpoint after setting th
 ```text
 model.provider = custom
 model.base_url = http://cccai.store/v1
-model.default = qwen3.6-plus
+model.default = gpt-5.5
 ```
 
 ## Evidence
@@ -24,7 +24,7 @@ model.default = qwen3.6-plus
 ## Verification Command
 
 ```bash
-hermes chat --query "只回复 OK" --provider custom --model qwen3.6-plus --toolsets safe --quiet --max-turns 3
+hermes chat --query "只回复 OK" --provider custom --model gpt-5.5 --toolsets safe --quiet --max-turns 3
 ```
 
 Expected output:

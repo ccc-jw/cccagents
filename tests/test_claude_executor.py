@@ -9,7 +9,7 @@ def test_build_claude_command_uses_prompt_model_and_text_output():
         role_code="DEV",
         model_base_url="http://cccai.store",
         model_api_key_ref="secret://models/dev",
-        model_name="qwen3.6-plus",
+        model_name="gpt-5.5",
     )
 
     command = build_claude_command(config, "只回复 OK")
@@ -19,7 +19,7 @@ def test_build_claude_command_uses_prompt_model_and_text_output():
         "-p",
         "只回复 OK",
         "--model",
-        "qwen3.6-plus",
+        "gpt-5.5",
         "--output-format",
         "text",
     ]
@@ -30,7 +30,7 @@ def test_build_claude_command_rejects_empty_prompt():
         role_code="DEV",
         model_base_url="http://cccai.store",
         model_api_key_ref="secret://models/dev",
-        model_name="qwen3.6-plus",
+        model_name="gpt-5.5",
     )
 
     with pytest.raises(ValueError, match="prompt is required"):

@@ -32,9 +32,9 @@ Environment variable verification:
 ```bash
 export ANTHROPIC_BASE_URL="http://cccai.store"
 export ANTHROPIC_API_KEY="<redacted-api-key>"
-export ANTHROPIC_MODEL="qwen3.6-plus"
+export ANTHROPIC_MODEL="gpt-5.5"
 
-claude -p "只回复 OK" --model qwen3.6-plus --output-format text
+claude -p "只回复 OK" --model gpt-5.5 --output-format text
 ```
 
 Expected output:

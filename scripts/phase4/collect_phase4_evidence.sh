@@ -14,8 +14,8 @@ mkdir -p "$OUTPUT_DIR"
 
 {
   date -u +%Y-%m-%dT%H:%M:%SZ
-  if [ -f /home/ubuntu/.env ]; then
-    grep -E 'GATEWAY_ALLOW_ALL_USERS|FEISHU' /home/ubuntu/.env | sed -E 's/(FEISHU_[A-Z_]+=).*/\1[REDACTED]/; s/(ou_)[A-Za-z0-9_-]+/\1[REDACTED]/g'
+  if [ -f /home/ubuntu/.hermes/.env ]; then
+    grep -E 'GATEWAY_ALLOW_ALL_USERS|FEISHU' /home/ubuntu/.hermes/.env | sed -E 's/(FEISHU_[A-Z_]+=).*/\1[REDACTED]/; s/(ou_)[A-Za-z0-9_-]+/\1[REDACTED]/g'
   else
     printf 'hermes_env=missing\n'
   fi

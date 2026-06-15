@@ -21,7 +21,7 @@
 RUN_USER=ubuntu
 PROJECT_SOURCE=/home/ubuntu/cccagents-source
 PROJECT_ROOT=/home/ubuntu/cccagents
-HERMES_ENV=/home/ubuntu/.env
+HERMES_ENV=/home/ubuntu/.hermes/.env
 HERMES_CONFIG=/home/ubuntu/.hermes/config.yaml
 ```
 
@@ -48,7 +48,7 @@ HERMES_CONFIG=/home/ubuntu/.hermes/config.yaml
 5. Claude Code CLI 默认不要使用 `--dangerously-skip-permissions`。
 6. DEV 最小写入任务使用窄授权，例如：
    ```bash
-   claude -p "$PROMPT" --model qwen3.6-plus --output-format text --allowedTools Read,Write
+   claude -p "$PROMPT" --model gpt-5.5 --output-format text --allowedTools Read,Write
    ```
 7. Feishu 用户消息只能进入 PM；不能直接路由到 PDM/RES/ARCH/DEV/TEST/SEC。
 
@@ -91,7 +91,7 @@ claude --help
 ```bash
 export ANTHROPIC_BASE_URL="http://cccai.store"
 export ANTHROPIC_API_KEY="<redacted-api-key>"
-export ANTHROPIC_MODEL="qwen3.6-plus"
+export ANTHROPIC_MODEL="gpt-5.5"
 ```
 
 Phase 1 门禁：必须是 Claude Code CLI 本体直接支持 OpenAI-compatible 网关；不接受协议适配层。如果本门禁失败，项目停止。
@@ -99,7 +99,7 @@ Phase 1 门禁：必须是 Claude Code CLI 本体直接支持 OpenAI-compatible 
 最小验证：
 
 ```bash
-claude -p "只回复 OK" --model qwen3.6-plus --output-format text --allowedTools Read
+claude -p "只回复 OK" --model gpt-5.5 --output-format text --allowedTools Read
 ```
 
 期望输出包含：
@@ -122,13 +122,13 @@ Hermes OpenAI-compatible 配置重点：base URL 必须带 `/v1`。
 ```text
 model.provider = custom
 model.base_url = http://cccai.store/v1
-model.default = qwen3.6-plus
+model.default = gpt-5.5
 ```
 
 验证 Hermes 模型：
 
 ```bash
-hermes chat --query "只回复 OK" --provider custom --model qwen3.6-plus --toolsets safe --quiet --max-turns 3
+hermes chat --query "只回复 OK" --provider custom --model gpt-5.5 --toolsets safe --quiet --max-turns 3
 ```
 
 期望输出：
@@ -154,7 +154,7 @@ chmod 700 /home/ubuntu/.hermes
 cat > /home/ubuntu/.hermes/.env <<'EOF'
 ANTHROPIC_BASE_URL=http://cccai.store
 ANTHROPIC_API_KEY=<redacted-api-key>
-ANTHROPIC_MODEL=qwen3.6-plus
+ANTHROPIC_MODEL=gpt-5.5
 
 FEISHU_APP_ID=<real-app-id>
 FEISHU_APP_SECRET=<redacted-app-secret>
@@ -210,7 +210,7 @@ Feishu smoke 顺序：
 cd /home/ubuntu/cccagents-source
 PROJECT_SOURCE=/home/ubuntu/cccagents-source \
 PROJECT_ROOT=/home/ubuntu/cccagents \
-HERMES_ENV=/home/ubuntu/.env \
+HERMES_ENV=/home/ubuntu/.hermes/.env \
 RUN_USER=ubuntu \
 UNIT_DIR=/tmp/cccagents-systemd-units \
 ./scripts/phase4/install_phase4_services.sh
