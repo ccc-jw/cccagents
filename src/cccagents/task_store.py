@@ -1,5 +1,6 @@
 import json
 import sqlite3
+from dataclasses import replace
 from pathlib import Path
 
 from cccagents.phase2_models import Task, TaskStatus
@@ -94,3 +95,44 @@ class TaskStore:
             next_handler_role=row[17],
             next_handler_reason=row[18],
         )
+
+    def list_tasks(self, project_id: str, status: TaskStatus | None = None) -> list[Task]:
+        query = "SELECT id FROM tasks WHERE project_id = ?"
+        params: list[str] = [project_id]
+        if status is not None:
+            query += " AND status = ?"
+            params.append(status.value)
+        query += " ORDER BY created_at, id"
+        with sqlite3.connect(self.db_path) as connection:
+            rows = connection.execute(query, params).fetchall()
+        return [self.get_task(row[0]) for row in rows]
+
+    def update_status(self, task_id: str, status: TaskStatus, updated_at: str | None = None) -> Task:
+        task = self.get_task(task_id)
+        updated = replace(task, status=status, updated_at=updated_at or task.updated_at)
+        self.save_task(updated)
+        return updated
+
+    def claim_task(self, task_id: str, started_at: str) -> Task:
+        task = self.get_task(task_id)
+        updated = replace(task, status=TaskStatus.RUNNING, started_at=started_at, updated_at=started_at)
+        self.save_task(updated)
+        return updated
+
+    def complete_task(self, task_id: str, artifact_ids: list[str], completed_at: str) -> Task:
+        task = self.get_task(task_id)
+        updated = replace(
+            task,
+            status=TaskStatus.COMPLETED,
+            output_artifact_ids=artifact_ids,
+            completed_at=completed_at,
+            updated_at=completed_at,
+        )
+        self.save_task(updated)
+        return updated
+
+    def fail_task(self, task_id: str, issue_ids: list[str], updated_at: str) -> Task:
+        task = self.get_task(task_id)
+        updated = replace(task, status=TaskStatus.FAILED, issue_ids=issue_ids, updated_at=updated_at)
+        self.save_task(updated)
+        return updated
