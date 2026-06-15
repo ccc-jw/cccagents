@@ -12,7 +12,11 @@ class RedactionResult:
 PATTERNS = [
     ("bearer_token", re.compile(r"Bearer\s+[A-Za-z0-9._~+/=-]+"), "Bearer [REDACTED]"),
     ("api_key_assignment", re.compile(r"(?i)([A-Z0-9_]*API[_-]?KEY)\s*=\s*\S+"), r"\1=[REDACTED]"),
+    ("secret_assignment", re.compile(r"(?i)\b(\w*SECRET)\s*=\s*\S+"), r"\1=[REDACTED]"),
+    ("token_assignment", re.compile(r"(?i)\b(\w*TOKEN)\s*=\s*\S+"), r"\1=[REDACTED]"),
+    ("encrypt_key_assignment", re.compile(r"(?i)\b(\w*ENCRYPT[_-]?KEY)\s*=\s*\S+"), r"\1=[REDACTED]"),
     ("password_assignment", re.compile(r"(?i)(password)\s*=\s*\S+"), r"\1=[REDACTED]"),
+    ("auth_assignment", re.compile(r"(?i)\b(auth)\s*=\s*\S+"), r"\1=[REDACTED]"),
 ]
 
 

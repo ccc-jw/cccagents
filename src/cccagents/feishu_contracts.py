@@ -4,7 +4,7 @@ from typing import Any
 from cccagents.redaction import redact_text
 
 
-ALLOWED_APPROVAL_ACTIONS = {"approve", "reject", "comment", "pause_project"}
+ALLOWED_APPROVAL_ACTIONS = {"approve", "reject", "comment", "pause_project", "resume_project"}
 
 
 @dataclass(frozen=True)
@@ -87,6 +87,6 @@ def validate_approval_action(
 
 def validate_card_content(content: str) -> FeishuDecision:
     redacted = redact_text(content)
-    if redacted != content:
+    if redacted.redacted:
         return FeishuDecision(False, "secret_like_content")
     return FeishuDecision(True, "approved")

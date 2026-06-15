@@ -152,3 +152,34 @@ def test_secret_like_card_content_is_rejected():
 
     assert decision.allowed is False
     assert decision.reason == "secret_like_content"
+
+
+def test_clean_card_content_is_approved():
+    decision = validate_card_content("测试完成，所有用例通过")
+
+    assert decision.allowed is True
+    assert decision.reason == "approved"
+
+
+def test_resume_project_approval_action_is_supported():
+    action = FeishuApprovalAction(
+        project_id="demo",
+        approval_id="approval-1",
+        action="resume_project",
+        feishu_user_id="user-1",
+        feishu_message_id="event-1",
+        timestamp=1_700_000_000,
+        signature="sig-ok",
+    )
+    context = FeishuSecurityContext(
+        allowed_approvers={"user-1"},
+        seen_event_ids=set(),
+        now=1_700_000_100,
+        timestamp_window_seconds=300,
+        expected_signature="sig-ok",
+    )
+
+    decision = validate_approval_action(action, context)
+
+    assert decision.allowed is True
+    assert decision.reason == "approved"

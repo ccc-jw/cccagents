@@ -35,3 +35,24 @@ def test_leaves_safe_text_unchanged():
     assert result.text == text
     assert result.redacted is False
     assert result.reasons == []
+
+
+def test_redacts_feishu_secret_assignments():
+    text = "FEISHU_APP_SECRET=real-secret FEISHU_VERIFICATION_TOKEN=real-token FEISHU_ENCRYPT_KEY=real-key"
+    result = redact_text(text)
+
+    assert result.text == "FEISHU_APP_SECRET=[REDACTED] FEISHU_VERIFICATION_TOKEN=[REDACTED] FEISHU_ENCRYPT_KEY=[REDACTED]"
+    assert result.redacted is True
+    assert "secret_assignment" in result.reasons
+    assert "token_assignment" in result.reasons
+
+
+def test_redacts_lowercase_token_and_secret_assignments():
+    text = "token=abc123 secret=xyz789 auth=BearerValue"
+    result = redact_text(text)
+
+    assert result.text == "token=[REDACTED] secret=[REDACTED] auth=[REDACTED]"
+    assert result.redacted is True
+    assert "token_assignment" in result.reasons
+    assert "secret_assignment" in result.reasons
+    assert "auth_assignment" in result.reasons
