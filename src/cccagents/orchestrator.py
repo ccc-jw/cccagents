@@ -55,12 +55,15 @@ def orchestrate_request(request: OrchestrationRequest, executor: FakeExecutor) -
     plan = build_role_plan(decision)
     project_dir = request.project_root / request.project_id
     project_dir.mkdir(parents=True, exist_ok=True)
+    _save_role_plan(project_dir, plan)
     _save_initial_state(request, decision.complexity, decision.required_roles, decision.risk_flags, "running")
 
     executed_roles: list[str] = []
     issues: list[str] = []
     for phase in plan.phases:
         for task in phase.tasks:
+            if phase.parallel and phase.isolation:
+                _append_parallel_isolation(project_dir, phase.name, task.role)
             result = executor.run(project_dir, task)
             executed_roles.append(result.role)
             issues.extend(result.issues)
@@ -96,3 +99,22 @@ def _save_initial_state(
             last_pm_notification_at=None,
         ),
     )
+
+
+def _save_role_plan(project_dir: Path, plan: RolePlan) -> None:
+    (project_dir / "role-plan.json").write_text(
+        json.dumps(asdict(plan), ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+
+
+def _append_parallel_isolation(project_dir: Path, phase_name: str, role: str) -> None:
+    log_dir = project_dir / "08-logs"
+    log_dir.mkdir(parents=True, exist_ok=True)
+    record = {
+        "phase": phase_name,
+        "role": role,
+        "rule": "no_cross_branch_artifacts",
+    }
+    with (log_dir / "parallel-isolation.jsonl").open("a", encoding="utf-8") as handle:
+        handle.write(json.dumps(record, ensure_ascii=False, sort_keys=True) + "\n")
