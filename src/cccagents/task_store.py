@@ -72,7 +72,74 @@ class TaskStore:
             row = connection.execute("SELECT * FROM tasks WHERE id = ?", (task_id,)).fetchone()
         if row is None:
             raise KeyError(task_id)
+        return self._task_from_row(row)
 
+    def list_tasks(self, project_id: str, status: TaskStatus | None = None) -> list[Task]:
+        query = "SELECT * FROM tasks WHERE project_id = ?"
+        params: tuple[str, ...]
+        if status is None:
+            params = (project_id,)
+        else:
+            query += " AND status = ?"
+            params = (project_id, status.value)
+        query += " ORDER BY created_at, id"
+        with sqlite3.connect(self.db_path) as connection:
+            rows = connection.execute(query, params).fetchall()
+        return [self._task_from_row(row) for row in rows]
+
+    def update_status(self, task_id: str, status: TaskStatus, updated_at: str | None = None) -> Task:
+        task = self.get_task(task_id)
+        updated = Task(
+            **{
+                **task.__dict__,
+                "status": status,
+                "updated_at": updated_at or task.updated_at,
+            }
+        )
+        self.save_task(updated)
+        return updated
+
+    def claim_task(self, task_id: str, started_at: str) -> Task:
+        task = self.get_task(task_id)
+        updated = Task(
+            **{
+                **task.__dict__,
+                "status": TaskStatus.RUNNING,
+                "started_at": started_at,
+                "updated_at": started_at,
+            }
+        )
+        self.save_task(updated)
+        return updated
+
+    def complete_task(self, task_id: str, output_artifact_ids: list[str], completed_at: str) -> Task:
+        task = self.get_task(task_id)
+        updated = Task(
+            **{
+                **task.__dict__,
+                "status": TaskStatus.COMPLETED,
+                "output_artifact_ids": output_artifact_ids,
+                "completed_at": completed_at,
+                "updated_at": completed_at,
+            }
+        )
+        self.save_task(updated)
+        return updated
+
+    def fail_task(self, task_id: str, issue_ids: list[str], updated_at: str) -> Task:
+        task = self.get_task(task_id)
+        updated = Task(
+            **{
+                **task.__dict__,
+                "status": TaskStatus.FAILED,
+                "issue_ids": issue_ids,
+                "updated_at": updated_at,
+            }
+        )
+        self.save_task(updated)
+        return updated
+
+    def _task_from_row(self, row: tuple) -> Task:
         return Task(
             id=row[0],
             project_id=row[1],
