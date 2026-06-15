@@ -17,7 +17,7 @@ class FeishuWebhookHandler(BaseHTTPRequestHandler):
 
         # Redact sensitive data before logging
         redacted = redact_text(post_data)
-        print(f"Received webhook: {redacted[:200]}...", flush=True)
+        print(f"Received webhook: {redacted.text[:200]}...", flush=True)
 
         # Parse configuration from environment
         project_root = Path(os.getenv("CCCAGENTS_PROJECT_ROOT", "/home/ubuntu/cccagents/projects"))
