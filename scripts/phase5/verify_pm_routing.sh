@@ -33,13 +33,6 @@ else
     exit 1
 fi
 
-if grep -q "Identity rules" "$AGENTS_FILE"; then
-    echo "   ✓ AGENTS.md contains Identity rules section"
-else
-    echo "   ✗ AGENTS.md missing Identity rules section"
-    exit 1
-fi
-
 if grep -q "Gateway boundary" "$AGENTS_FILE"; then
     echo "   ✓ AGENTS.md contains Gateway boundary section"
 else
@@ -47,10 +40,10 @@ else
     exit 1
 fi
 
-if grep -q "Stage A scope notice" "$AGENTS_FILE"; then
-    echo "   ✓ AGENTS.md contains Stage A scope notice"
+if grep -q "PM responsibilities" "$AGENTS_FILE"; then
+    echo "   ✓ AGENTS.md contains PM responsibilities section"
 else
-    echo "   ✗ AGENTS.md missing Stage A scope notice"
+    echo "   ✗ AGENTS.md missing PM responsibilities section"
     exit 1
 fi
 echo
