@@ -1,0 +1,4 @@
+name: cccagents-gateway-hook
+description: Trigger cccagents orchestrator when Feishu messages are received
+events:
+  - agent:start
