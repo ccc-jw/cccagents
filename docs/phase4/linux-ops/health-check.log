@@ -1,0 +1,74 @@
+2026-06-24T14:05:26Z [INFO] Environment preflight
+  ▶ Environment preflight
+2026-06-24T14:05:26Z [INFO] systemd service status
+  ▶ systemd service status
+2026-06-24T14:05:27Z [PASS] service cccagents-hermes-gateway: enabled / active
+  ✔ service cccagents-hermes-gateway: enabled / active
+2026-06-24T14:05:29Z [PASS] service cccagents-pm-scheduler: enabled / active
+  ✔ service cccagents-pm-scheduler: enabled / active
+2026-06-24T14:05:30Z [PASS] service cccagents-feishu-webhook: enabled / active
+  ✔ service cccagents-feishu-webhook: enabled / active
+2026-06-24T14:05:31Z [PASS] service nginx: enabled / active
+  ✔ service nginx: enabled / active
+2026-06-24T14:05:31Z [INFO] Port listeners
+  ▶ Port listeners
+2026-06-24T14:05:31Z [PASS] port 8080 (feishu webhook): listening
+  ✔ port 8080 (feishu webhook): listening
+2026-06-24T14:05:32Z [PASS] port 80 (nginx http): listening
+  ✔ port 80 (nginx http): listening
+2026-06-24T14:05:32Z [PASS] port 443 (nginx https): listening
+  ✔ port 443 (nginx https): listening
+2026-06-24T14:05:32Z [INFO] Local webhook endpoint
+  ▶ Local webhook endpoint
+2026-06-24T14:05:33Z [PASS] GET 127.0.0.1:8080/ → 200
+  ✔ GET 127.0.0.1:8080/ → 200
+2026-06-24T14:05:33Z [PASS] POST 127.0.0.1:8080/webhook/feishu → 200
+  ✔ POST 127.0.0.1:8080/webhook/feishu → 200
+2026-06-24T14:05:33Z [INFO] nginx reverse proxy
+  ▶ nginx reverse proxy
+2026-06-24T14:05:34Z [PASS] GET 127.0.0.1:80/ → 301 (301/302 = redirect, 404 = routed but / unmatched)
+  ✔ GET 127.0.0.1:80/ → 301 (301/302 = redirect, 404 = routed but / unmatched)
+2026-06-24T14:05:35Z [PASS] GET 127.0.0.1:443/ → 404 (nginx TLS handshake OK)
+  ✔ GET 127.0.0.1:443/ → 404 (nginx TLS handshake OK)
+2026-06-24T14:05:35Z [PASS] POST 127.0.0.1:443/webhook/feishu → 200 (nginx → 8080 reverse proxy works)
+  ✔ POST 127.0.0.1:443/webhook/feishu → 200 (nginx → 8080 reverse proxy works)
+2026-06-24T14:05:35Z [INFO] Gateway reachability (https://cccai.store/v1/models)
+  ▶ Gateway reachability (https://cccai.store/v1/models)
+2026-06-24T14:05:36Z [PASS] Gateway https://cccai.store/v1/models → 401 (200 = with key, 401/403 = needs auth)
+  ✔ Gateway https://cccai.store/v1/models → 401 (200 = with key, 401/403 = needs auth)
+2026-06-24T14:05:36Z [INFO] Claude Code CLI
+  ▶ Claude Code CLI
+2026-06-24T14:05:37Z [PASS] claude CLI: 2.1.187 (Claude Code)
+  ✔ claude CLI: 2.1.187 (Claude Code)
+2026-06-24T14:05:37Z [INFO] Hermes binary
+  ▶ Hermes binary
+2026-06-24T14:05:38Z [PASS] Hermes at /home/ubuntu/.local/bin/hermes: Hermes Agent v0.17.0 (2026.6.19)
+  ✔ Hermes at /home/ubuntu/.local/bin/hermes: Hermes Agent v0.17.0 (2026.6.19)
+2026-06-24T14:05:38Z [INFO] Hermes chat end-to-end
+  ▶ Hermes chat end-to-end
+2026-06-24T14:05:50Z [PASS] Hermes chat returned OK
+  ✔ Hermes chat returned OK
+2026-06-24T14:05:50Z [INFO] Hermes env critical vars
+  ▶ Hermes env critical vars
+2026-06-24T14:05:51Z [PASS] env ANTHROPIC_BASE_URL: set
+  ✔ env ANTHROPIC_BASE_URL: set
+2026-06-24T14:05:51Z [PASS] env ANTHROPIC_API_KEY: set
+  ✔ env ANTHROPIC_API_KEY: set
+2026-06-24T14:05:51Z [PASS] env FEISHU_APP_ID: set
+  ✔ env FEISHU_APP_ID: set
+2026-06-24T14:05:51Z [PASS] env FEISHU_VERIFICATION_TOKEN: set
+  ✔ env FEISHU_VERIFICATION_TOKEN: set
+2026-06-24T14:05:51Z [PASS] env FEISHU_ENCRYPT_KEY: set
+  ✔ env FEISHU_ENCRYPT_KEY: set
+2026-06-24T14:05:51Z [INFO] Disk and memory
+  ▶ Disk and memory
+2026-06-24T14:05:52Z [PASS] disk /: 19% used
+  ✔ disk /: 19% used
+2026-06-24T14:05:52Z [PASS] memory: 7260MB free
+  ✔ memory: 7260MB free
+
+============================================
+ALL CHECKS PASSED
+2026-06-24T14:05:52Z [PASS] all checks passed
+Detailed log: /tmp/health-remote.log
+============================================

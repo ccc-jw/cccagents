@@ -1,0 +1,15 @@
+[Unit]
+Description=Run cccagents health check every 5 minutes
+Requires=cccagents-health-check.service
+
+[Timer]
+# 5 minutes after the last activation, but anchor to a fixed offset so runs
+# don't bunch on boot.  Persisting across boots (Persistent=true) means a
+# missed run fires immediately on resume.
+OnBootSec=2min
+OnUnitActiveSec=5min
+Persistent=true
+Unit=cccagents-health-check.service
+
+[Install]
+WantedBy=timers.target

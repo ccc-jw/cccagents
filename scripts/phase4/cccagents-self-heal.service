@@ -1,0 +1,16 @@
+[Unit]
+Description=cccagents self-healing monitor
+After=cccagents-hermes-gateway.service cccagents-pm-scheduler.service cccagents-feishu-webhook.service
+
+[Service]
+Type=oneshot
+User=root
+# When triggered, read the latest health-check log and restart any service
+# whose health check has been failing.  Bound at 1 invocation per timer
+# cycle (5 min) to avoid storming.
+ExecStart=/home/ubuntu/cccagents-source/scripts/phase4/self_heal.sh
+StandardOutput=append:/var/log/cccagents-self-heal.log
+StandardError=append:/var/log/cccagents-self-heal.log
+
+[Install]
+WantedBy=multi-user.target

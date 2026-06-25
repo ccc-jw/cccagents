@@ -2,9 +2,10 @@
 cccagents Gateway Hook
 
 This hook fires when the Hermes Gateway starts processing a message from Feishu.
-It handles two types of messages:
-1. Orchestration triggers (S3 complexity) → creates project in pending_approval state
-2. Approval actions (approve/reject/pause/resume) → updates project state
+It handles:
+1. Approval actions (approve/reject/pause/resume) → updates project state
+2. S3+ triggers → creates project in pending_approval state
+3. S0/S1 tasks → executes with real Claude CLI
 """
 
 import os
@@ -18,48 +19,101 @@ CCCAGENTS_SOURCE = "/home/ubuntu/cccagents-source"
 if CCCAGENTS_SOURCE not in sys.path:
     sys.path.insert(0, f"{CCCAGENTS_SOURCE}/src")
 
-# Orchestration triggers (S3 complexity keywords)
-ORCHESTRATION_TRIGGERS = ["部署.*生产", "修改.*权限", "删除.*数据", "FEISHU_APP_SECRET", "生产环境", "prod"]
+# S3 complexity keywords
+S3_TRIGGERS = ["部署.*生产", "修改.*权限", "删除.*数据", "FEISHU_APP_SECRET", "生产环境", "prod"]
 
-# Approval action patterns: "approve <project_id>", "拒绝 <project_id>", etc.
+# Approval action patterns
 APPROVAL_PATTERN = re.compile(
-    r"(approve|reject|pause|resume|同意|拒绝|暂停|恢复)\s+(feishu-[\d_]+)",
+    r"(approve|reject|pause|resume|同意|拒绝|暂停|恢复)\s+(feishu-[\d_]+|s0-[\d_]+)",
     re.IGNORECASE
 )
+
+# Claude API config
+CLAUDE_BASE_URL = "https://cccai.store/v1"
+CLAUDE_MODEL = "gpt-5.5"
+
+
+def _load_api_key() -> str:
+    """Load API key from .env."""
+    env_file = Path("/home/ubuntu/.hermes/.env")
+    if env_file.exists():
+        for line in env_file.read_text().splitlines():
+            if line.startswith("ANTHROPIC_API_KEY="):
+                return line.split("=", 1)[1].strip().strip('"').strip("'")
+    return os.getenv("ANTHROPIC_API_KEY", "")
 
 
 async def handle(event_type: str, context: dict):
     """Handle agent:start event from Hermes Gateway."""
     try:
-        # Extract message from context
         message = context.get("message", "")
         platform = context.get("platform", "unknown")
         user_id = context.get("user_id", "unknown")
 
-        # Only process Feishu messages
         if platform != "feishu" or not message:
             return
 
-        # Check for approval action first
+        # 1. Check for approval action first
         approval_match = APPROVAL_PATTERN.search(message)
         if approval_match:
             await _handle_approval(approval_match, message, user_id)
             return
 
-        # Check for orchestration triggers
-        if any(re.search(pattern, message, re.IGNORECASE) for pattern in ORCHESTRATION_TRIGGERS):
+        # 2. Check for S3 triggers → pending_approval
+        if any(re.search(pattern, message, re.IGNORECASE) for pattern in S3_TRIGGERS):
             await _handle_orchestration(message)
             return
 
+        # 3. All other messages → try real Claude CLI execution
+        await _handle_real_execution(message)
+
     except Exception as e:
-        # Don't crash the gateway, just log the error
         print(f"[cccagents-gateway-hook] Error: {e}", flush=True)
         import traceback
         traceback.print_exc()
 
 
+async def _handle_real_execution(message: str):
+    """Handle task with real Claude CLI execution."""
+    from cccagents.orchestrator import OrchestrationRequest
+    from cccagents.real_orchestrator import RealExecutor, orchestrate_with_real_executor
+
+    api_key = _load_api_key()
+    if not api_key:
+        print("[cccagents-gateway-hook] No ANTHROPIC_API_KEY found, skipping real execution", flush=True)
+        return
+
+    timestamp = time.strftime("%Y%m%d_%H%M%S", time.gmtime())
+    project_id = f"s0-{timestamp}"
+    now_ts = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+
+    project_root = Path("/home/ubuntu/cccagents/projects")
+    project_dir = project_root / project_id
+
+    request = OrchestrationRequest(
+        project_id=project_id,
+        text=message,
+        project_root=project_root,
+        now=now_ts,
+    )
+
+    executor = RealExecutor(
+        model=CLAUDE_MODEL,
+        base_url=CLAUDE_BASE_URL,
+        api_key=api_key,
+    )
+
+    result = orchestrate_with_real_executor(request, executor, now_ts)
+
+    print(
+        f"[cccagents-gateway-hook] Real execution {project_id}: "
+        f"status={result.get('status')}, complexity={result.get('complexity', 'n/a')}",
+        flush=True
+    )
+
+
 async def _handle_orchestration(message: str):
-    """Handle orchestration trigger - create project in pending_approval state."""
+    """Handle S3+ orchestration trigger → pending_approval."""
     from cccagents.project_orchestrator import orchestrate_project
     from cccagents.orchestrator import FakeExecutor, OrchestrationRequest
 
@@ -80,7 +134,7 @@ async def _handle_orchestration(message: str):
     result = orchestrate_project(project_dir, request, FakeExecutor(), now_ts)
 
     print(
-        f"[cccagents-gateway-hook] Created project {project_id}: "
+        f"[cccagents-gateway-hook] S3 project {project_id}: "
         f"status={result.get('status')}, complexity={result.get('complexity')}",
         flush=True
     )
@@ -94,7 +148,6 @@ async def _handle_approval(match: re.Match, message: str, user_id: str):
     action_text = match.group(1).lower()
     project_id = match.group(2)
 
-    # Map action text to canonical action
     action_map = {
         "approve": "approve", "同意": "approve",
         "reject": "reject", "拒绝": "reject",

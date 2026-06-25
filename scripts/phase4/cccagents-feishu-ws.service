@@ -1,0 +1,19 @@
+[Unit]
+Description=cccagents Feishu long-connection receiver
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/cccagents-source
+EnvironmentFile=/home/ubuntu/.hermes/.env
+Environment=CCCAGENTS_PROJECT_ROOT=/home/ubuntu/cccagents/projects
+Environment=PYTHONPATH=/home/ubuntu/cccagents-source/src
+Environment=FEISHU_DOMAIN=https://open.feishu.cn
+ExecStart=/home/ubuntu/cccagents-source/.venv/bin/python -m cccagents.feishu_ws
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

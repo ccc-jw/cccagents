@@ -1,0 +1,12 @@
+[Unit]
+Description=Run cccagents self-heal every 5 minutes
+Requires=cccagents-self-heal.service
+
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=5min
+Persistent=true
+Unit=cccagents-self-heal.service
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,24 @@
+[Unit]
+Description=cccagents periodic health check
+After=network-online.target cccagents-hermes-gateway.service cccagents-feishu-webhook.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=ubuntu
+WorkingDirectory=/home/ubuntu/cccagents-source
+EnvironmentFile=/home/ubuntu/.hermes/.env
+Environment=PYTHONPATH=/home/ubuntu/cccagents-source/src
+Environment=HERMES_HOME=/home/ubuntu/.hermes
+Environment=HOME=/home/ubuntu
+Environment=LOG_FILE=/var/log/cccagents-health.log
+ExecStart=/home/ubuntu/cccagents-source/scripts/phase4/health_check.sh
+StandardOutput=append:/var/log/cccagents-health.log
+StandardError=append:/var/log/cccagents-health.log
+
+# Run as root would be cleaner (no HERMES_HOME / HOME override) but the
+# script is otherwise identical; we keep User=ubuntu so the log path matches
+# what the operator sees when they run it by hand.
+
+[Install]
+WantedBy=multi-user.target
